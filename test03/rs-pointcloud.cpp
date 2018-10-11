@@ -116,6 +116,11 @@ void draw_3d_points(C24BitMap & alignPic, const rs2::video_frame& color ,
 	auto vertices   = points.get_vertices();
 	auto tex_coords = points.get_texture_coordinates();
 	alignPic.FormatF(color_w , color_h);
+	
+	gCAMERA_CENTER_X_POS = cx; 
+    gCAMERA_CENTER_Y_POS = cy; 
+	gCAMERA_CENTER_X_SCALE = fx; 
+	gCAMERA_CENTER_Y_SCALE = fy;
     for (int i = 0; i < points.size(); ++i)
 	{
 		double x,y,z;
