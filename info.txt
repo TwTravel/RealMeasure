@@ -1,0 +1,722 @@
+./unit-tests/unit-tests-live.cpp:                        rs2_intrinsics intrin;
+./unit-tests/unit-tests-live.cpp:                        rs2_intrinsics intrin;
+./unit-tests/unit-tests-live.cpp:        rs2_intrinsics intrinsics{ W, H, 0, 0, 0, 0, RS2_DISTORTION_NONE ,{ 0,0,0,0,0 } };
+./unit-tests/unit-tests-live.cpp:        rs2_intrinsics intrinsics{ W, H, 0, 0, 0, 0, RS2_DISTORTION_NONE ,{ 0,0,0,0,0 } };
+./unit-tests/unit-tests-live.cpp:        rs2_intrinsics intrinsics{ W, H, 0, 0, 0, 0, RS2_DISTORTION_NONE ,{ 0,0,0,0,0 } };
+./unit-tests/unit-tests-internal.cpp:                        rs2_intrinsics intrin;
+./unit-tests/unit-tests-internal.cpp:                        rs2_intrinsics intrin;
+./unit-tests/unit-tests-internal.cpp:        rs2_intrinsics intrinsics{ W, H, 0, 0, 0, 0, RS2_DISTORTION_NONE ,{ 0,0,0,0,0 } };
+./unit-tests/unit-tests-internal.cpp:        rs2_intrinsics intrinsics{ W, H, 0, 0, 0, 0, RS2_DISTORTION_NONE ,{ 0,0,0,0,0 } };
+./unit-tests/unit-tests-post-processing.cpp:            rs2_intrinsics depth_intrinsics = { width, height,
+./unit-tests/unit-tests-post-processing.cpp:            rs2_intrinsics depth_intrinsics = { width, height,
+./include/librealsense2/hpp/rs_frame.hpp:        * \return rs2_intrinsics - stream intrinsics.
+./include/librealsense2/hpp/rs_frame.hpp:        rs2_intrinsics get_intrinsics() const
+./include/librealsense2/hpp/rs_frame.hpp:            rs2_intrinsics intr;
+./include/librealsense2/rsutil.h:static void rs2_project_point_to_pixel(float pixel[2], const struct rs2_intrinsics * intrin, const float point[3])
+./include/librealsense2/rsutil.h:static void rs2_deproject_pixel_to_point(float point[3], const struct rs2_intrinsics * intrin, const float pixel[2], float depth)
+./include/librealsense2/rsutil.h:static void rs2_fov(const struct rs2_intrinsics * intrin, float to_fov[2])
+./include/librealsense2/rsutil.h:    const struct rs2_intrinsics* depth_intrin,
+./include/librealsense2/rsutil.h:    const struct rs2_intrinsics* color_intrin,
+./include/librealsense2/h/rs_internal.h:    rs2_intrinsics intrinsics;
+./include/librealsense2/h/rs_sensor.h:void rs2_get_video_stream_intrinsics(const rs2_stream_profile* mode, rs2_intrinsics* intrinsics, rs2_error** error);
+./include/librealsense2/h/rs_types.h:typedef struct rs2_intrinsics
+./include/librealsense2/h/rs_types.h:} rs2_intrinsics;
+./wrappers/matlab/types.h:template<> static mxArray* MatlabParamParser::mx_wrapper_fns<rs2_intrinsics>::wrap(rs2_intrinsics&& val)
+./wrappers/nodejs/src/addon.cpp:  explicit RSIntrinsics(rs2_intrinsics intrinsics) {
+./wrappers/nodejs/src/addon.cpp:    rs2_intrinsics intr;
+./wrappers/python/python.cpp:    py::class_<rs2_intrinsics> intrinsics(m, "intrinsics");
+./wrappers/python/python.cpp:        .def_readwrite("width", &rs2_intrinsics::width)
+./wrappers/python/python.cpp:        .def_readwrite("height", &rs2_intrinsics::height)
+./wrappers/python/python.cpp:        .def_readwrite("ppx", &rs2_intrinsics::ppx)
+./wrappers/python/python.cpp:        .def_readwrite("ppy", &rs2_intrinsics::ppy)
+./wrappers/python/python.cpp:        .def_readwrite("fx", &rs2_intrinsics::fx)
+./wrappers/python/python.cpp:        .def_readwrite("fy", &rs2_intrinsics::fy)
+./wrappers/python/python.cpp:        .def_readwrite("model", &rs2_intrinsics::model)
+./wrappers/python/python.cpp:        .def_property(BIND_RAW_ARRAY_PROPERTY(rs2_intrinsics, coeffs, float, 5))
+./wrappers/python/python.cpp:        .def("__repr__", [](const rs2_intrinsics& self)
+./wrappers/python/python.cpp:    m.def("rs2_project_point_to_pixel", [](const rs2_intrinsics& intrin, const std::array<float, 3>& point)->std::array<float, 2>
+./wrappers/python/python.cpp:    m.def("rs2_deproject_pixel_to_point", [](const rs2_intrinsics& intrin, const std::array<float, 2>& pixel, float depth)->std::array<float, 3>
+./wrappers/python/python.cpp:    m.def("rs2_fov", [](const rs2_intrinsics& intrin)->std::array<float, 2>
+./src/cuda/cuda-pointcloud.cuh:    void deproject_depth_cuda(float * points, const rs2_intrinsics & intrin, const uint16_t * depth, float depth_scale);
+./src/cuda/cuda-pointcloud.cu:void deproject_pixel_to_point_cuda(float points[3], const struct rs2_intrinsics * intrin, const float pixel[2], float depth) {
+./src/cuda/cuda-pointcloud.cu://void kernel_deproject_depth_cuda(float * points, const rs2_intrinsics & intrin, const uint16_t * depth, std::function<uint16_t(float)> map_depth)
+./src/cuda/cuda-pointcloud.cu:void kernel_deproject_depth_cuda(float * points, const rs2_intrinsics* intrin, const uint16_t * depth, float depth_scale)
+./src/cuda/cuda-pointcloud.cu:void rscuda::deproject_depth_cuda(float * points, const rs2_intrinsics & intrin, const uint16_t * depth, float depth_scale)
+./src/cuda/cuda-pointcloud.cu:    rs2_intrinsics* dev_intrin = 0;
+./src/cuda/cuda-pointcloud.cu:    result = cudaMalloc(&dev_intrin, sizeof(rs2_intrinsics));
+./src/cuda/cuda-pointcloud.cu:    result = cudaMemcpy(dev_intrin, &intrin, sizeof(rs2_intrinsics), cudaMemcpyHostToDevice);
+./src/tm2/tm-device.cpp:    rs2_intrinsics tm2_sensor::get_intrinsics(const stream_profile& profile) const
+./src/tm2/tm-device.cpp:        rs2_intrinsics result;
+./src/tm2/tm-device.h:        rs2_intrinsics get_intrinsics(const stream_profile& profile) const override;
+./src/ivcam/sr300.cpp:    rs2_intrinsics sr300_camera::make_depth_intrinsics(const ivcam::camera_calib_params & c, const int2 & dims)
+./src/ivcam/sr300.cpp:    rs2_intrinsics sr300_camera::make_color_intrinsics(const ivcam::camera_calib_params & c, const int2 & dims)
+./src/ivcam/sr300.cpp:        rs2_intrinsics intrin = { dims.x, dims.y, c.Kt[0][2] * 0.5f + 0.5f,
+./src/ivcam/sr300.h:            rs2_intrinsics get_intrinsics(const stream_profile& profile) const override
+./src/ivcam/sr300.h:                            return rs2_intrinsics{};
+./src/ivcam/sr300.h:            rs2_intrinsics get_intrinsics(const stream_profile& profile) const override
+./src/ivcam/sr300.h:                            return rs2_intrinsics{};
+./src/ivcam/sr300.h:        static rs2_intrinsics make_depth_intrinsics(const ivcam::camera_calib_params& c, const int2& dims);
+./src/ivcam/sr300.h:        static rs2_intrinsics make_color_intrinsics(const ivcam::camera_calib_params& c, const int2& dims);
+./src/proc/occlusion-filter.h:        void set_texel_intrinsics(const rs2_intrinsics& in);
+./src/proc/occlusion-filter.h:        void set_depth_intrinsics(const rs2_intrinsics& in) { _depth_intrinsics = in; }
+./src/proc/occlusion-filter.h:        optional_value<rs2_intrinsics>              _depth_intrinsics;
+./src/proc/occlusion-filter.h:        optional_value<rs2_intrinsics>              _texels_intrinsics;
+./src/proc/align.cpp:    inline void distorte_x_y(const __m128 & x, const __m128 & y, __m128 * distorted_x, __m128 * distorted_y, const rs2_intrinsics& to)
+./src/proc/align.cpp:    inline void distorte_x_y<RS2_DISTORTION_MODIFIED_BROWN_CONRADY>(const __m128& x, const __m128& y, __m128* distorted_x, __m128* distorted_y, const rs2_intrinsics& to)
+./src/proc/align.cpp:        const rs2_intrinsics& to,
+./src/proc/align.cpp:    image_transform::image_transform(const rs2_intrinsics& from, float depth_scale)
+./src/proc/align.cpp:    void image_transform::align_depth_to_other(const uint16_t* z_pixels, uint16_t* dest, int bpp, const rs2_intrinsics& depth, const rs2_intrinsics& to,
+./src/proc/align.cpp:    inline void image_transform::move_depth_to_other(const uint16_t* z_pixels, uint16_t* dest, const rs2_intrinsics& to,
+./src/proc/align.cpp:    void image_transform::align_other_to_depth(const uint16_t* z_pixels, const byte* source, byte* dest, int bpp, const rs2_intrinsics& to,
+./src/proc/align.cpp:    bool is_special_resolution(const rs2_intrinsics& depth, const rs2_intrinsics& to)
+./src/proc/align.cpp:    inline void image_transform::align_depth_to_other_sse(const uint16_t * z_pixels, uint16_t * dest, const rs2_intrinsics& depth, const rs2_intrinsics& to,
+./src/proc/align.cpp:    inline void image_transform::align_other_to_depth_sse(const uint16_t * z_pixels, const byte * source, byte * dest, int bpp, const rs2_intrinsics& to,
+./src/proc/align.cpp:        T* dest, const rs2_intrinsics& to,
+./src/proc/align.cpp:    void align_images(const rs2_intrinsics& depth_intrin, const rs2_extrinsics& depth_to_other,
+./src/proc/align.cpp:        const rs2_intrinsics& other_intrin, GET_DEPTH get_depth, TRANSFER_PIXEL transfer_pixel)
+./src/proc/align.cpp:    void align_z_to_other(byte* z_aligned_to_other, const uint16_t* z_pixels, float z_scale, const rs2_intrinsics& z_intrin, const rs2_extrinsics& z_to_other, const rs2_intrinsics& other_intrin)
+./src/proc/align.cpp:    void align_other_to_depth_bytes(byte* other_aligned_to_depth, GET_DEPTH get_depth, const rs2_intrinsics& depth_intrin, const rs2_extrinsics& depth_to_other, const rs2_intrinsics& other_intrin, const byte* other_pixels)
+./src/proc/align.cpp:    void align_other_to_depth(byte* other_aligned_to_depth, GET_DEPTH get_depth, const rs2_intrinsics& depth_intrin, const rs2_extrinsics & depth_to_other, const rs2_intrinsics& other_intrin, const byte* other_pixels, rs2_format other_format)
+./src/proc/align.cpp:    void align_other_to_z(byte* other_aligned_to_z, const uint16_t* z_pixels, float z_scale, const rs2_intrinsics& z_intrin, const rs2_extrinsics& z_to_other, const rs2_intrinsics& other_intrin, const byte* other_pixels, rs2_format other_format)
+./src/proc/align.cpp:        rs2_intrinsics depth_intrinsics = depth_profile.get_intrinsics();
+./src/proc/align.cpp:            rs2_intrinsics other_intrinsics = other_profile.get_intrinsics();
+./src/proc/align.h:        image_transform(const rs2_intrinsics& from,
+./src/proc/align.h:            const rs2_intrinsics& depth,
+./src/proc/align.h:            const rs2_intrinsics& to,
+./src/proc/align.h:            byte* dest, int bpp, const rs2_intrinsics& to,
+./src/proc/align.h:        const rs2_intrinsics _depth;
+./src/proc/align.h:            uint16_t* dest, const rs2_intrinsics& depth,
+./src/proc/align.h:            const rs2_intrinsics& to,
+./src/proc/align.h:            byte* dest, int bpp, const rs2_intrinsics& to,
+./src/proc/align.h:            uint16_t* dest, const rs2_intrinsics& to,
+./src/proc/align.h:            T* dest, const rs2_intrinsics& to,
+./src/proc/pointcloud.cpp:    template<class MAP_DEPTH> void deproject_depth(float * points, const rs2_intrinsics & intrin, const uint16_t * depth, MAP_DEPTH map_depth)
+./src/proc/pointcloud.cpp:    const float3 * depth_to_points(uint8_t* image, const rs2_intrinsics &depth_intrinsics, const uint16_t * depth_image, float depth_scale)
+./src/proc/pointcloud.cpp:    float2 project(const rs2_intrinsics *intrin, const float3 & point) { float2 pixel = {}; rs2_project_point_to_pixel(&pixel.x, intrin, &point.x); return pixel; }
+./src/proc/pointcloud.cpp:    float2 pixel_to_texcoord(const rs2_intrinsics *intrin, const float2 & pixel) { return{ pixel.x / (intrin->width), pixel.y / (intrin->height) }; }
+./src/proc/pointcloud.cpp:    float2 project_to_texcoord(const rs2_intrinsics *intrin, const float3 & point) { return pixel_to_texcoord(intrin, project(intrin, point)); }
+./src/proc/pointcloud.cpp:            _depth_intrinsics = optional_value<rs2_intrinsics>();
+./src/proc/pointcloud.cpp:        _other_intrinsics = optional_value<rs2_intrinsics>();
+./src/proc/pointcloud.cpp:        const rs2_intrinsics &other_intrinsics,
+./src/proc/pointcloud.cpp:        const rs2_intrinsics &other_intrinsics,
+./src/proc/pointcloud.cpp:        rs2_intrinsics mapped_intr;
+./src/proc/pointcloud.h:        optional_value<rs2_intrinsics>         _depth_intrinsics;
+./src/proc/pointcloud.h:        optional_value<rs2_intrinsics>         _other_intrinsics;
+./src/proc/disparity-transform.cpp:            rs2_intrinsics src_intrin   = src_vspi->get_intrinsics();
+./src/proc/occlusion-filter.cpp:    void occlusion_filter::set_texel_intrinsics(const rs2_intrinsics& in)
+./src/proc/decimation-filter.cpp:                rs2_intrinsics tgt_intrin = tgt_vspi->get_intrinsics();
+./src/proc/decimation-filter.cpp:            rs2_intrinsics src_intrin = src_vspi->get_intrinsics();
+./src/proc/decimation-filter.cpp:            rs2_intrinsics tgt_intrin = tgt_vspi->get_intrinsics();
+./src/types.h:    inline rs2_intrinsics pad_crop_intrinsics(const rs2_intrinsics & i, int pad_crop)
+./src/types.h:    inline rs2_intrinsics scale_intrinsics(const rs2_intrinsics & i, int width, int height)
+./src/types.h:    inline bool operator == (const rs2_intrinsics & a, const rs2_intrinsics & b) { return std::memcmp(&a, &b, sizeof(a)) == 0; }
+./src/ds5/ds5-color.h:        rs2_intrinsics get_intrinsics(const stream_profile& profile) const override;
+./src/ds5/ds5-device.cpp:        rs2_intrinsics get_intrinsics(const stream_profile& profile) const override
+./src/ds5/ds5-device.cpp:                            return rs2_intrinsics{};
+./src/ds5/ds5-device.cpp:                            return rs2_intrinsics{};
+./src/ds5/ds5-motion.cpp:        rs2_intrinsics get_intrinsics(const stream_profile& profile) const override
+./src/ds5/ds5-motion.cpp:                        return rs2_intrinsics{};
+./src/ds5/ds5-private.cpp:        rs2_intrinsics get_intrinsic_by_resolution_coefficients_table(const std::vector<uint8_t> & raw_data, uint32_t width, uint32_t height)
+./src/ds5/ds5-private.cpp:            rs2_intrinsics intrinsics;
+./src/ds5/ds5-private.cpp:        rs2_intrinsics get_intrinsic_fisheye_table(const std::vector<uint8_t>& raw_data, uint32_t width, uint32_t height)
+./src/ds5/ds5-private.cpp:             rs2_intrinsics intrinsics;
+./src/ds5/ds5-private.cpp:        rs2_intrinsics get_color_stream_intrinsic(const std::vector<uint8_t>& raw_data, uint32_t width, uint32_t height)
+./src/ds5/ds5-private.cpp:            rs2_intrinsics calc_intrinsic{
+./src/ds5/ds5-private.cpp:        rs2_intrinsics get_intrinsic_by_resolution(const vector<uint8_t> & raw_data, calibration_table_id table_id, uint32_t width, uint32_t height)
+./src/ds5/ds5-private.h:            rs2_intrinsics   left_imager_intrinsic;
+./src/ds5/ds5-private.h:            rs2_intrinsics   right_imager_intrinsic;
+./src/ds5/ds5-private.h:            rs2_intrinsics   depth_intrinsic[max_ds5_rect_resolutions];
+./src/ds5/ds5-private.h:        rs2_intrinsics get_intrinsic_by_resolution(const std::vector<uint8_t>& raw_data, calibration_table_id table_id, uint32_t width, uint32_t height);
+./src/ds5/ds5-private.h:        rs2_intrinsics get_intrinsic_by_resolution_coefficients_table(const std::vector<uint8_t>& raw_data, uint32_t width, uint32_t height);
+./src/ds5/ds5-private.h:        rs2_intrinsics get_intrinsic_fisheye_table(const std::vector<uint8_t>& raw_data, uint32_t width, uint32_t height);
+./src/ds5/ds5-color.cpp:    rs2_intrinsics ds5_color_sensor::get_intrinsics(const stream_profile& profile) const
+./src/ds5/ds5-color.cpp:                    return rs2_intrinsics{};
+./src/context.cpp:        virtual rs2_intrinsics get_intrinsics(unsigned int subdevice, const stream_profile& profile) const
+./src/context.cpp:            return rs2_intrinsics {};
+./src/stream.h:              _calc_intrinsics([]() -> rs2_intrinsics { throw not_implemented_exception("No intrinsics are available for this stream profile!"); }),
+./src/stream.h:        rs2_intrinsics get_intrinsics() const override { return _calc_intrinsics(); }
+./src/stream.h:        void set_intrinsics(std::function<rs2_intrinsics()> calc) override { _calc_intrinsics = calc; }
+./src/stream.h:            std::function<rs2_intrinsics()> int_func = _calc_intrinsics;
+./src/stream.h:        std::function<rs2_intrinsics()> _calc_intrinsics;
+./src/rs.cpp:void rs2_get_video_stream_intrinsics(const rs2_stream_profile* from, rs2_intrinsics* intr, rs2_error** error) BEGIN_API_CALL
+./src/core/video.h:        virtual rs2_intrinsics get_intrinsics(const stream_profile& profile) const = 0;
+./src/core/video.h:        virtual rs2_intrinsics get_intrinsics() const = 0;
+./src/core/video.h:        virtual void set_intrinsics(std::function<rs2_intrinsics()> calc) = 0;
+./src/l500/l500.h:            rs2_intrinsics get_intrinsics(const stream_profile& profile) const override
+./src/l500/l500.h:                rs2_intrinsics intrinsics;
+./src/l500/l500.h:                            return rs2_intrinsics{};
+./src/image.h:    void             deproject_z                    (float * points, const rs2_intrinsics & z_intrin, const uint16_t * z_pixels, float z_scale);
+./src/image.h:    void             deproject_disparity            (float * points, const rs2_intrinsics & disparity_intrin, const uint16_t * disparity_pixels, float disparity_scale);
+./src/image.h:    void             align_z_to_other               (byte * z_aligned_to_other, const uint16_t * z_pixels, float z_scale, const rs2_intrinsics & z_intrin,
+./src/image.h:                                                     const rs2_extrinsics & z_to_other, const rs2_intrinsics & other_intrin);
+./src/image.h:    void             align_disparity_to_other       (byte * disparity_aligned_to_other, const uint16_t * disparity_pixels, float disparity_scale, const rs2_intrinsics & disparity_intrin,
+./src/image.h:                                                     const rs2_extrinsics & disparity_to_other, const rs2_intrinsics & other_intrin);
+./src/image.h:    void             align_other_to_z               (byte * other_aligned_to_z, const uint16_t * z_pixels, float z_scale, const rs2_intrinsics & z_intrin,
+./src/image.h:                                                     const rs2_extrinsics & z_to_other, const rs2_intrinsics & other_intrin, const byte * other_pixels, rs2_format other_format);
+./src/image.h:    void             align_other_to_disparity       (byte * other_aligned_to_disparity, const uint16_t * disparity_pixels, float disparity_scale, const rs2_intrinsics & disparity_intrin,
+./src/image.h:                                                     const rs2_extrinsics & disparity_to_other, const rs2_intrinsics & other_intrin, const byte * other_pixels, rs2_format other_format);
+./src/image.h:    std::vector<int> compute_rectification_table    (const rs2_intrinsics & rect_intrin, const rs2_extrinsics & rect_to_unrect, const rs2_intrinsics & unrect_intrin);
+./src/media/ros/ros_writer.h:            rs2_intrinsics intrinsics{};
+./src/media/ros/ros_reader.h:            rs2_intrinsics intrinsics{};
+./examples/software-device/rs-software-device.cpp:    rs2_intrinsics create_texture_intrinsics()
+./examples/software-device/rs-software-device.cpp:        rs2_intrinsics intrinsics = { color_frame.x, color_frame.y,
+./examples/software-device/rs-software-device.cpp:    rs2_intrinsics create_depth_intrinsics()
+./examples/software-device/rs-software-device.cpp:        rs2_intrinsics intrinsics = { depth_frame.x, depth_frame.y,
+./examples/software-device/rs-software-device.cpp:    rs2_intrinsics color_intrinsics = app_data.create_texture_intrinsics();
+./examples/software-device/rs-software-device.cpp:    rs2_intrinsics depth_intrinsics = app_data.create_depth_intrinsics();
+./examples/software-device/readme.md:rs2_intrinsics depth_intrinsics{ W, H, W / 2, H / 2, W , H , RS2_DISTORTION_BROWN_CONRADY ,{ 0,0,0,0,0 } };
+./examples/software-device/readme.md:rs2_intrinsics color_intrinsics = { texture.x, texture.y,
+./examples/sensor-control/api_how_to.h:                rs2_intrinsics intrinsics = video_stream.get_intrinsics();
+./examples/measure/readme.md:float dist_3d(const rs2_intrinsics& intr, const rs2::depth_frame& frame, pixel u, pixel v)
+./examples/measure/rs-measure.cpp:    rs2_intrinsics intr = frame.get_profile().as<rs2::video_stream_profile>().get_intrinsics(); // Calibration data
+./tools/enumerate-devices/rs-enumerate-devices.cpp:void print(const rs2_intrinsics& intrinsics)
+./tools/enumerate-devices/rs-enumerate-devices.cpp:bool safe_get_intrinsics(const video_stream_profile& profile, rs2_intrinsics& intrinsics)
+./tools/enumerate-devices/rs-enumerate-devices.cpp:bool operator ==(const rs2_intrinsics& lhs,
+./tools/enumerate-devices/rs-enumerate-devices.cpp:                 const rs2_intrinsics& rhs)
+./tools/enumerate-devices/rs-enumerate-devices.cpp:            std::map<stream_and_resolution, std::vector<std::pair<std::set<rs2_format>, rs2_intrinsics>>> intrinsics_map;
+./tools/enumerate-devices/rs-enumerate-devices.cpp:                        rs2_intrinsics intrinsics{};
+./tools/enumerate-devices/rs-enumerate-devices.cpp:                            auto it = std::find_if((intrinsics_map[stream_res]).begin(), (intrinsics_map[stream_res]).end(), [&](const std::pair<std::set<rs2_format>, rs2_intrinsics>& kvp) {
+./tools/enumerate-devices/rs-enumerate-devices.cpp:                    if (intrinsics.second == rs2_intrinsics{})
+./tools/depth-quality/depth-quality-model.h:            void update_stream_attributes(const rs2_intrinsics &intrinsic, float scale_units, float baseline)
+./tools/depth-quality/depth-quality-model.h:            rs2_intrinsics          _depth_intrinsic;
+./tools/depth-quality/depth-metrics.h:        inline double evaluate_pixel(const plane& p, const rs2_intrinsics* intrin, float x, float y, float distance, float3& output)
+./tools/depth-quality/depth-metrics.h:        inline float3 approximate_intersection(const plane& p, const rs2_intrinsics* intrin, float x, float y, float min, float max)
+./tools/depth-quality/depth-metrics.h:        inline float3 approximate_intersection(const plane& p, const rs2_intrinsics* intrin, float x, float y)
+./tools/depth-quality/depth-metrics.h:            const rs2_intrinsics * intrin,
+./tools/depth-quality/depth-quality-model.cpp:                            rs2_intrinsics intrin{};
+./unit-tests/unit-tests-live.cpp:                        rs2_intrinsics intrin;
+./unit-tests/unit-tests-live.cpp:                        rs2_intrinsics intrin;
+./unit-tests/unit-tests-live.cpp:        rs2_intrinsics intrinsics{ W, H, 0, 0, 0, 0, RS2_DISTORTION_NONE ,{ 0,0,0,0,0 } };
+./unit-tests/unit-tests-live.cpp:        rs2_intrinsics intrinsics{ W, H, 0, 0, 0, 0, RS2_DISTORTION_NONE ,{ 0,0,0,0,0 } };
+./unit-tests/unit-tests-live.cpp:        rs2_intrinsics intrinsics{ W, H, 0, 0, 0, 0, RS2_DISTORTION_NONE ,{ 0,0,0,0,0 } };
+./unit-tests/unit-tests-internal.cpp:                        rs2_intrinsics intrin;
+./unit-tests/unit-tests-internal.cpp:                        rs2_intrinsics intrin;
+./unit-tests/unit-tests-internal.cpp:        rs2_intrinsics intrinsics{ W, H, 0, 0, 0, 0, RS2_DISTORTION_NONE ,{ 0,0,0,0,0 } };
+./unit-tests/unit-tests-internal.cpp:        rs2_intrinsics intrinsics{ W, H, 0, 0, 0, 0, RS2_DISTORTION_NONE ,{ 0,0,0,0,0 } };
+./unit-tests/unit-tests-post-processing.cpp:            rs2_intrinsics depth_intrinsics = { width, height,
+./unit-tests/unit-tests-post-processing.cpp:            rs2_intrinsics depth_intrinsics = { width, height,
+./unit-tests/unit-tests-live.cpp:                        rs2_intrinsics intrin;
+./unit-tests/unit-tests-live.cpp:                        rs2_intrinsics intrin;
+./unit-tests/unit-tests-live.cpp:        rs2_intrinsics intrinsics{ W, H, 0, 0, 0, 0, RS2_DISTORTION_NONE ,{ 0,0,0,0,0 } };
+./unit-tests/unit-tests-live.cpp:        rs2_intrinsics intrinsics{ W, H, 0, 0, 0, 0, RS2_DISTORTION_NONE ,{ 0,0,0,0,0 } };
+./unit-tests/unit-tests-live.cpp:        rs2_intrinsics intrinsics{ W, H, 0, 0, 0, 0, RS2_DISTORTION_NONE ,{ 0,0,0,0,0 } };
+./unit-tests/unit-tests-internal.cpp:                        rs2_intrinsics intrin;
+./unit-tests/unit-tests-internal.cpp:                        rs2_intrinsics intrin;
+./unit-tests/unit-tests-internal.cpp:        rs2_intrinsics intrinsics{ W, H, 0, 0, 0, 0, RS2_DISTORTION_NONE ,{ 0,0,0,0,0 } };
+./unit-tests/unit-tests-internal.cpp:        rs2_intrinsics intrinsics{ W, H, 0, 0, 0, 0, RS2_DISTORTION_NONE ,{ 0,0,0,0,0 } };
+./unit-tests/unit-tests-post-processing.cpp:            rs2_intrinsics depth_intrinsics = { width, height,
+./unit-tests/unit-tests-post-processing.cpp:            rs2_intrinsics depth_intrinsics = { width, height,
+./include/librealsense2/hpp/rs_frame.hpp:        * \return rs2_intrinsics - stream intrinsics.
+./include/librealsense2/hpp/rs_frame.hpp:        rs2_intrinsics get_intrinsics() const
+./include/librealsense2/hpp/rs_frame.hpp:            rs2_intrinsics intr;
+./include/librealsense2/rsutil.h:static void rs2_project_point_to_pixel(float pixel[2], const struct rs2_intrinsics * intrin, const float point[3])
+./include/librealsense2/rsutil.h:static void rs2_deproject_pixel_to_point(float point[3], const struct rs2_intrinsics * intrin, const float pixel[2], float depth)
+./include/librealsense2/rsutil.h:static void rs2_fov(const struct rs2_intrinsics * intrin, float to_fov[2])
+./include/librealsense2/rsutil.h:    const struct rs2_intrinsics* depth_intrin,
+./include/librealsense2/rsutil.h:    const struct rs2_intrinsics* color_intrin,
+./include/librealsense2/h/rs_internal.h:    rs2_intrinsics intrinsics;
+./include/librealsense2/h/rs_sensor.h:void rs2_get_video_stream_intrinsics(const rs2_stream_profile* mode, rs2_intrinsics* intrinsics, rs2_error** error);
+./include/librealsense2/h/rs_types.h:typedef struct rs2_intrinsics
+./include/librealsense2/h/rs_types.h:} rs2_intrinsics;
+./include/librealsense2/hpp/rs_frame.hpp:        * \return rs2_intrinsics - stream intrinsics.
+./include/librealsense2/hpp/rs_frame.hpp:        rs2_intrinsics get_intrinsics() const
+./include/librealsense2/hpp/rs_frame.hpp:            rs2_intrinsics intr;
+./include/librealsense2/rsutil.h:static void rs2_project_point_to_pixel(float pixel[2], const struct rs2_intrinsics * intrin, const float point[3])
+./include/librealsense2/rsutil.h:static void rs2_deproject_pixel_to_point(float point[3], const struct rs2_intrinsics * intrin, const float pixel[2], float depth)
+./include/librealsense2/rsutil.h:static void rs2_fov(const struct rs2_intrinsics * intrin, float to_fov[2])
+./include/librealsense2/rsutil.h:    const struct rs2_intrinsics* depth_intrin,
+./include/librealsense2/rsutil.h:    const struct rs2_intrinsics* color_intrin,
+./include/librealsense2/h/rs_internal.h:    rs2_intrinsics intrinsics;
+./include/librealsense2/h/rs_sensor.h:void rs2_get_video_stream_intrinsics(const rs2_stream_profile* mode, rs2_intrinsics* intrinsics, rs2_error** error);
+./include/librealsense2/h/rs_types.h:typedef struct rs2_intrinsics
+./include/librealsense2/h/rs_types.h:} rs2_intrinsics;
+./include/librealsense2/hpp/rs_frame.hpp:        * \return rs2_intrinsics - stream intrinsics.
+./include/librealsense2/hpp/rs_frame.hpp:        rs2_intrinsics get_intrinsics() const
+./include/librealsense2/hpp/rs_frame.hpp:            rs2_intrinsics intr;
+./include/librealsense2/hpp/rs_frame.hpp:        * \return rs2_intrinsics - stream intrinsics.
+./include/librealsense2/hpp/rs_frame.hpp:        rs2_intrinsics get_intrinsics() const
+./include/librealsense2/hpp/rs_frame.hpp:            rs2_intrinsics intr;
+./include/librealsense2/rsutil.h:static void rs2_project_point_to_pixel(float pixel[2], const struct rs2_intrinsics * intrin, const float point[3])
+./include/librealsense2/rsutil.h:static void rs2_deproject_pixel_to_point(float point[3], const struct rs2_intrinsics * intrin, const float pixel[2], float depth)
+./include/librealsense2/rsutil.h:static void rs2_fov(const struct rs2_intrinsics * intrin, float to_fov[2])
+./include/librealsense2/rsutil.h:    const struct rs2_intrinsics* depth_intrin,
+./include/librealsense2/rsutil.h:    const struct rs2_intrinsics* color_intrin,
+./include/librealsense2/h/rs_internal.h:    rs2_intrinsics intrinsics;
+./include/librealsense2/h/rs_sensor.h:void rs2_get_video_stream_intrinsics(const rs2_stream_profile* mode, rs2_intrinsics* intrinsics, rs2_error** error);
+./include/librealsense2/h/rs_types.h:typedef struct rs2_intrinsics
+./include/librealsense2/h/rs_types.h:} rs2_intrinsics;
+./include/librealsense2/h/rs_internal.h:    rs2_intrinsics intrinsics;
+./include/librealsense2/h/rs_sensor.h:void rs2_get_video_stream_intrinsics(const rs2_stream_profile* mode, rs2_intrinsics* intrinsics, rs2_error** error);
+./include/librealsense2/h/rs_types.h:typedef struct rs2_intrinsics
+./include/librealsense2/h/rs_types.h:} rs2_intrinsics;
+./wrappers/matlab/types.h:template<> static mxArray* MatlabParamParser::mx_wrapper_fns<rs2_intrinsics>::wrap(rs2_intrinsics&& val)
+./wrappers/nodejs/src/addon.cpp:  explicit RSIntrinsics(rs2_intrinsics intrinsics) {
+./wrappers/nodejs/src/addon.cpp:    rs2_intrinsics intr;
+./wrappers/python/python.cpp:    py::class_<rs2_intrinsics> intrinsics(m, "intrinsics");
+./wrappers/python/python.cpp:        .def_readwrite("width", &rs2_intrinsics::width)
+./wrappers/python/python.cpp:        .def_readwrite("height", &rs2_intrinsics::height)
+./wrappers/python/python.cpp:        .def_readwrite("ppx", &rs2_intrinsics::ppx)
+./wrappers/python/python.cpp:        .def_readwrite("ppy", &rs2_intrinsics::ppy)
+./wrappers/python/python.cpp:        .def_readwrite("fx", &rs2_intrinsics::fx)
+./wrappers/python/python.cpp:        .def_readwrite("fy", &rs2_intrinsics::fy)
+./wrappers/python/python.cpp:        .def_readwrite("model", &rs2_intrinsics::model)
+./wrappers/python/python.cpp:        .def_property(BIND_RAW_ARRAY_PROPERTY(rs2_intrinsics, coeffs, float, 5))
+./wrappers/python/python.cpp:        .def("__repr__", [](const rs2_intrinsics& self)
+./wrappers/python/python.cpp:    m.def("rs2_project_point_to_pixel", [](const rs2_intrinsics& intrin, const std::array<float, 3>& point)->std::array<float, 2>
+./wrappers/python/python.cpp:    m.def("rs2_deproject_pixel_to_point", [](const rs2_intrinsics& intrin, const std::array<float, 2>& pixel, float depth)->std::array<float, 3>
+./wrappers/python/python.cpp:    m.def("rs2_fov", [](const rs2_intrinsics& intrin)->std::array<float, 2>
+./wrappers/matlab/types.h:template<> static mxArray* MatlabParamParser::mx_wrapper_fns<rs2_intrinsics>::wrap(rs2_intrinsics&& val)
+./wrappers/matlab/types.h:template<> static mxArray* MatlabParamParser::mx_wrapper_fns<rs2_intrinsics>::wrap(rs2_intrinsics&& val)
+./wrappers/nodejs/src/addon.cpp:  explicit RSIntrinsics(rs2_intrinsics intrinsics) {
+./wrappers/nodejs/src/addon.cpp:    rs2_intrinsics intr;
+./wrappers/nodejs/src/addon.cpp:  explicit RSIntrinsics(rs2_intrinsics intrinsics) {
+./wrappers/nodejs/src/addon.cpp:    rs2_intrinsics intr;
+./wrappers/nodejs/src/addon.cpp:  explicit RSIntrinsics(rs2_intrinsics intrinsics) {
+./wrappers/nodejs/src/addon.cpp:    rs2_intrinsics intr;
+./wrappers/python/python.cpp:    py::class_<rs2_intrinsics> intrinsics(m, "intrinsics");
+./wrappers/python/python.cpp:        .def_readwrite("width", &rs2_intrinsics::width)
+./wrappers/python/python.cpp:        .def_readwrite("height", &rs2_intrinsics::height)
+./wrappers/python/python.cpp:        .def_readwrite("ppx", &rs2_intrinsics::ppx)
+./wrappers/python/python.cpp:        .def_readwrite("ppy", &rs2_intrinsics::ppy)
+./wrappers/python/python.cpp:        .def_readwrite("fx", &rs2_intrinsics::fx)
+./wrappers/python/python.cpp:        .def_readwrite("fy", &rs2_intrinsics::fy)
+./wrappers/python/python.cpp:        .def_readwrite("model", &rs2_intrinsics::model)
+./wrappers/python/python.cpp:        .def_property(BIND_RAW_ARRAY_PROPERTY(rs2_intrinsics, coeffs, float, 5))
+./wrappers/python/python.cpp:        .def("__repr__", [](const rs2_intrinsics& self)
+./wrappers/python/python.cpp:    m.def("rs2_project_point_to_pixel", [](const rs2_intrinsics& intrin, const std::array<float, 3>& point)->std::array<float, 2>
+./wrappers/python/python.cpp:    m.def("rs2_deproject_pixel_to_point", [](const rs2_intrinsics& intrin, const std::array<float, 2>& pixel, float depth)->std::array<float, 3>
+./wrappers/python/python.cpp:    m.def("rs2_fov", [](const rs2_intrinsics& intrin)->std::array<float, 2>
+./wrappers/python/python.cpp:    py::class_<rs2_intrinsics> intrinsics(m, "intrinsics");
+./wrappers/python/python.cpp:        .def_readwrite("width", &rs2_intrinsics::width)
+./wrappers/python/python.cpp:        .def_readwrite("height", &rs2_intrinsics::height)
+./wrappers/python/python.cpp:        .def_readwrite("ppx", &rs2_intrinsics::ppx)
+./wrappers/python/python.cpp:        .def_readwrite("ppy", &rs2_intrinsics::ppy)
+./wrappers/python/python.cpp:        .def_readwrite("fx", &rs2_intrinsics::fx)
+./wrappers/python/python.cpp:        .def_readwrite("fy", &rs2_intrinsics::fy)
+./wrappers/python/python.cpp:        .def_readwrite("model", &rs2_intrinsics::model)
+./wrappers/python/python.cpp:        .def_property(BIND_RAW_ARRAY_PROPERTY(rs2_intrinsics, coeffs, float, 5))
+./wrappers/python/python.cpp:        .def("__repr__", [](const rs2_intrinsics& self)
+./wrappers/python/python.cpp:    m.def("rs2_project_point_to_pixel", [](const rs2_intrinsics& intrin, const std::array<float, 3>& point)->std::array<float, 2>
+./wrappers/python/python.cpp:    m.def("rs2_deproject_pixel_to_point", [](const rs2_intrinsics& intrin, const std::array<float, 2>& pixel, float depth)->std::array<float, 3>
+./wrappers/python/python.cpp:    m.def("rs2_fov", [](const rs2_intrinsics& intrin)->std::array<float, 2>
+./src/cuda/cuda-pointcloud.cuh:    void deproject_depth_cuda(float * points, const rs2_intrinsics & intrin, const uint16_t * depth, float depth_scale);
+./src/cuda/cuda-pointcloud.cu:void deproject_pixel_to_point_cuda(float points[3], const struct rs2_intrinsics * intrin, const float pixel[2], float depth) {
+./src/cuda/cuda-pointcloud.cu://void kernel_deproject_depth_cuda(float * points, const rs2_intrinsics & intrin, const uint16_t * depth, std::function<uint16_t(float)> map_depth)
+./src/cuda/cuda-pointcloud.cu:void kernel_deproject_depth_cuda(float * points, const rs2_intrinsics* intrin, const uint16_t * depth, float depth_scale)
+./src/cuda/cuda-pointcloud.cu:void rscuda::deproject_depth_cuda(float * points, const rs2_intrinsics & intrin, const uint16_t * depth, float depth_scale)
+./src/cuda/cuda-pointcloud.cu:    rs2_intrinsics* dev_intrin = 0;
+./src/cuda/cuda-pointcloud.cu:    result = cudaMalloc(&dev_intrin, sizeof(rs2_intrinsics));
+./src/cuda/cuda-pointcloud.cu:    result = cudaMemcpy(dev_intrin, &intrin, sizeof(rs2_intrinsics), cudaMemcpyHostToDevice);
+./src/tm2/tm-device.cpp:    rs2_intrinsics tm2_sensor::get_intrinsics(const stream_profile& profile) const
+./src/tm2/tm-device.cpp:        rs2_intrinsics result;
+./src/tm2/tm-device.h:        rs2_intrinsics get_intrinsics(const stream_profile& profile) const override;
+./src/ivcam/sr300.cpp:    rs2_intrinsics sr300_camera::make_depth_intrinsics(const ivcam::camera_calib_params & c, const int2 & dims)
+./src/ivcam/sr300.cpp:    rs2_intrinsics sr300_camera::make_color_intrinsics(const ivcam::camera_calib_params & c, const int2 & dims)
+./src/ivcam/sr300.cpp:        rs2_intrinsics intrin = { dims.x, dims.y, c.Kt[0][2] * 0.5f + 0.5f,
+./src/ivcam/sr300.h:            rs2_intrinsics get_intrinsics(const stream_profile& profile) const override
+./src/ivcam/sr300.h:                            return rs2_intrinsics{};
+./src/ivcam/sr300.h:            rs2_intrinsics get_intrinsics(const stream_profile& profile) const override
+./src/ivcam/sr300.h:                            return rs2_intrinsics{};
+./src/ivcam/sr300.h:        static rs2_intrinsics make_depth_intrinsics(const ivcam::camera_calib_params& c, const int2& dims);
+./src/ivcam/sr300.h:        static rs2_intrinsics make_color_intrinsics(const ivcam::camera_calib_params& c, const int2& dims);
+./src/proc/occlusion-filter.h:        void set_texel_intrinsics(const rs2_intrinsics& in);
+./src/proc/occlusion-filter.h:        void set_depth_intrinsics(const rs2_intrinsics& in) { _depth_intrinsics = in; }
+./src/proc/occlusion-filter.h:        optional_value<rs2_intrinsics>              _depth_intrinsics;
+./src/proc/occlusion-filter.h:        optional_value<rs2_intrinsics>              _texels_intrinsics;
+./src/proc/align.cpp:    inline void distorte_x_y(const __m128 & x, const __m128 & y, __m128 * distorted_x, __m128 * distorted_y, const rs2_intrinsics& to)
+./src/proc/align.cpp:    inline void distorte_x_y<RS2_DISTORTION_MODIFIED_BROWN_CONRADY>(const __m128& x, const __m128& y, __m128* distorted_x, __m128* distorted_y, const rs2_intrinsics& to)
+./src/proc/align.cpp:        const rs2_intrinsics& to,
+./src/proc/align.cpp:    image_transform::image_transform(const rs2_intrinsics& from, float depth_scale)
+./src/proc/align.cpp:    void image_transform::align_depth_to_other(const uint16_t* z_pixels, uint16_t* dest, int bpp, const rs2_intrinsics& depth, const rs2_intrinsics& to,
+./src/proc/align.cpp:    inline void image_transform::move_depth_to_other(const uint16_t* z_pixels, uint16_t* dest, const rs2_intrinsics& to,
+./src/proc/align.cpp:    void image_transform::align_other_to_depth(const uint16_t* z_pixels, const byte* source, byte* dest, int bpp, const rs2_intrinsics& to,
+./src/proc/align.cpp:    bool is_special_resolution(const rs2_intrinsics& depth, const rs2_intrinsics& to)
+./src/proc/align.cpp:    inline void image_transform::align_depth_to_other_sse(const uint16_t * z_pixels, uint16_t * dest, const rs2_intrinsics& depth, const rs2_intrinsics& to,
+./src/proc/align.cpp:    inline void image_transform::align_other_to_depth_sse(const uint16_t * z_pixels, const byte * source, byte * dest, int bpp, const rs2_intrinsics& to,
+./src/proc/align.cpp:        T* dest, const rs2_intrinsics& to,
+./src/proc/align.cpp:    void align_images(const rs2_intrinsics& depth_intrin, const rs2_extrinsics& depth_to_other,
+./src/proc/align.cpp:        const rs2_intrinsics& other_intrin, GET_DEPTH get_depth, TRANSFER_PIXEL transfer_pixel)
+./src/proc/align.cpp:    void align_z_to_other(byte* z_aligned_to_other, const uint16_t* z_pixels, float z_scale, const rs2_intrinsics& z_intrin, const rs2_extrinsics& z_to_other, const rs2_intrinsics& other_intrin)
+./src/proc/align.cpp:    void align_other_to_depth_bytes(byte* other_aligned_to_depth, GET_DEPTH get_depth, const rs2_intrinsics& depth_intrin, const rs2_extrinsics& depth_to_other, const rs2_intrinsics& other_intrin, const byte* other_pixels)
+./src/proc/align.cpp:    void align_other_to_depth(byte* other_aligned_to_depth, GET_DEPTH get_depth, const rs2_intrinsics& depth_intrin, const rs2_extrinsics & depth_to_other, const rs2_intrinsics& other_intrin, const byte* other_pixels, rs2_format other_format)
+./src/proc/align.cpp:    void align_other_to_z(byte* other_aligned_to_z, const uint16_t* z_pixels, float z_scale, const rs2_intrinsics& z_intrin, const rs2_extrinsics& z_to_other, const rs2_intrinsics& other_intrin, const byte* other_pixels, rs2_format other_format)
+./src/proc/align.cpp:        rs2_intrinsics depth_intrinsics = depth_profile.get_intrinsics();
+./src/proc/align.cpp:            rs2_intrinsics other_intrinsics = other_profile.get_intrinsics();
+./src/proc/align.h:        image_transform(const rs2_intrinsics& from,
+./src/proc/align.h:            const rs2_intrinsics& depth,
+./src/proc/align.h:            const rs2_intrinsics& to,
+./src/proc/align.h:            byte* dest, int bpp, const rs2_intrinsics& to,
+./src/proc/align.h:        const rs2_intrinsics _depth;
+./src/proc/align.h:            uint16_t* dest, const rs2_intrinsics& depth,
+./src/proc/align.h:            const rs2_intrinsics& to,
+./src/proc/align.h:            byte* dest, int bpp, const rs2_intrinsics& to,
+./src/proc/align.h:            uint16_t* dest, const rs2_intrinsics& to,
+./src/proc/align.h:            T* dest, const rs2_intrinsics& to,
+./src/proc/pointcloud.cpp:    template<class MAP_DEPTH> void deproject_depth(float * points, const rs2_intrinsics & intrin, const uint16_t * depth, MAP_DEPTH map_depth)
+./src/proc/pointcloud.cpp:    const float3 * depth_to_points(uint8_t* image, const rs2_intrinsics &depth_intrinsics, const uint16_t * depth_image, float depth_scale)
+./src/proc/pointcloud.cpp:    float2 project(const rs2_intrinsics *intrin, const float3 & point) { float2 pixel = {}; rs2_project_point_to_pixel(&pixel.x, intrin, &point.x); return pixel; }
+./src/proc/pointcloud.cpp:    float2 pixel_to_texcoord(const rs2_intrinsics *intrin, const float2 & pixel) { return{ pixel.x / (intrin->width), pixel.y / (intrin->height) }; }
+./src/proc/pointcloud.cpp:    float2 project_to_texcoord(const rs2_intrinsics *intrin, const float3 & point) { return pixel_to_texcoord(intrin, project(intrin, point)); }
+./src/proc/pointcloud.cpp:            _depth_intrinsics = optional_value<rs2_intrinsics>();
+./src/proc/pointcloud.cpp:        _other_intrinsics = optional_value<rs2_intrinsics>();
+./src/proc/pointcloud.cpp:        const rs2_intrinsics &other_intrinsics,
+./src/proc/pointcloud.cpp:        const rs2_intrinsics &other_intrinsics,
+./src/proc/pointcloud.cpp:        rs2_intrinsics mapped_intr;
+./src/proc/pointcloud.h:        optional_value<rs2_intrinsics>         _depth_intrinsics;
+./src/proc/pointcloud.h:        optional_value<rs2_intrinsics>         _other_intrinsics;
+./src/proc/disparity-transform.cpp:            rs2_intrinsics src_intrin   = src_vspi->get_intrinsics();
+./src/proc/occlusion-filter.cpp:    void occlusion_filter::set_texel_intrinsics(const rs2_intrinsics& in)
+./src/proc/decimation-filter.cpp:                rs2_intrinsics tgt_intrin = tgt_vspi->get_intrinsics();
+./src/proc/decimation-filter.cpp:            rs2_intrinsics src_intrin = src_vspi->get_intrinsics();
+./src/proc/decimation-filter.cpp:            rs2_intrinsics tgt_intrin = tgt_vspi->get_intrinsics();
+./src/types.h:    inline rs2_intrinsics pad_crop_intrinsics(const rs2_intrinsics & i, int pad_crop)
+./src/types.h:    inline rs2_intrinsics scale_intrinsics(const rs2_intrinsics & i, int width, int height)
+./src/types.h:    inline bool operator == (const rs2_intrinsics & a, const rs2_intrinsics & b) { return std::memcmp(&a, &b, sizeof(a)) == 0; }
+./src/ds5/ds5-color.h:        rs2_intrinsics get_intrinsics(const stream_profile& profile) const override;
+./src/ds5/ds5-device.cpp:        rs2_intrinsics get_intrinsics(const stream_profile& profile) const override
+./src/ds5/ds5-device.cpp:                            return rs2_intrinsics{};
+./src/ds5/ds5-device.cpp:                            return rs2_intrinsics{};
+./src/ds5/ds5-motion.cpp:        rs2_intrinsics get_intrinsics(const stream_profile& profile) const override
+./src/ds5/ds5-motion.cpp:                        return rs2_intrinsics{};
+./src/ds5/ds5-private.cpp:        rs2_intrinsics get_intrinsic_by_resolution_coefficients_table(const std::vector<uint8_t> & raw_data, uint32_t width, uint32_t height)
+./src/ds5/ds5-private.cpp:            rs2_intrinsics intrinsics;
+./src/ds5/ds5-private.cpp:        rs2_intrinsics get_intrinsic_fisheye_table(const std::vector<uint8_t>& raw_data, uint32_t width, uint32_t height)
+./src/ds5/ds5-private.cpp:             rs2_intrinsics intrinsics;
+./src/ds5/ds5-private.cpp:        rs2_intrinsics get_color_stream_intrinsic(const std::vector<uint8_t>& raw_data, uint32_t width, uint32_t height)
+./src/ds5/ds5-private.cpp:            rs2_intrinsics calc_intrinsic{
+./src/ds5/ds5-private.cpp:        rs2_intrinsics get_intrinsic_by_resolution(const vector<uint8_t> & raw_data, calibration_table_id table_id, uint32_t width, uint32_t height)
+./src/ds5/ds5-private.h:            rs2_intrinsics   left_imager_intrinsic;
+./src/ds5/ds5-private.h:            rs2_intrinsics   right_imager_intrinsic;
+./src/ds5/ds5-private.h:            rs2_intrinsics   depth_intrinsic[max_ds5_rect_resolutions];
+./src/ds5/ds5-private.h:        rs2_intrinsics get_intrinsic_by_resolution(const std::vector<uint8_t>& raw_data, calibration_table_id table_id, uint32_t width, uint32_t height);
+./src/ds5/ds5-private.h:        rs2_intrinsics get_intrinsic_by_resolution_coefficients_table(const std::vector<uint8_t>& raw_data, uint32_t width, uint32_t height);
+./src/ds5/ds5-private.h:        rs2_intrinsics get_intrinsic_fisheye_table(const std::vector<uint8_t>& raw_data, uint32_t width, uint32_t height);
+./src/ds5/ds5-color.cpp:    rs2_intrinsics ds5_color_sensor::get_intrinsics(const stream_profile& profile) const
+./src/ds5/ds5-color.cpp:                    return rs2_intrinsics{};
+./src/context.cpp:        virtual rs2_intrinsics get_intrinsics(unsigned int subdevice, const stream_profile& profile) const
+./src/context.cpp:            return rs2_intrinsics {};
+./src/stream.h:              _calc_intrinsics([]() -> rs2_intrinsics { throw not_implemented_exception("No intrinsics are available for this stream profile!"); }),
+./src/stream.h:        rs2_intrinsics get_intrinsics() const override { return _calc_intrinsics(); }
+./src/stream.h:        void set_intrinsics(std::function<rs2_intrinsics()> calc) override { _calc_intrinsics = calc; }
+./src/stream.h:            std::function<rs2_intrinsics()> int_func = _calc_intrinsics;
+./src/stream.h:        std::function<rs2_intrinsics()> _calc_intrinsics;
+./src/rs.cpp:void rs2_get_video_stream_intrinsics(const rs2_stream_profile* from, rs2_intrinsics* intr, rs2_error** error) BEGIN_API_CALL
+./src/core/video.h:        virtual rs2_intrinsics get_intrinsics(const stream_profile& profile) const = 0;
+./src/core/video.h:        virtual rs2_intrinsics get_intrinsics() const = 0;
+./src/core/video.h:        virtual void set_intrinsics(std::function<rs2_intrinsics()> calc) = 0;
+./src/l500/l500.h:            rs2_intrinsics get_intrinsics(const stream_profile& profile) const override
+./src/l500/l500.h:                rs2_intrinsics intrinsics;
+./src/l500/l500.h:                            return rs2_intrinsics{};
+./src/image.h:    void             deproject_z                    (float * points, const rs2_intrinsics & z_intrin, const uint16_t * z_pixels, float z_scale);
+./src/image.h:    void             deproject_disparity            (float * points, const rs2_intrinsics & disparity_intrin, const uint16_t * disparity_pixels, float disparity_scale);
+./src/image.h:    void             align_z_to_other               (byte * z_aligned_to_other, const uint16_t * z_pixels, float z_scale, const rs2_intrinsics & z_intrin,
+./src/image.h:                                                     const rs2_extrinsics & z_to_other, const rs2_intrinsics & other_intrin);
+./src/image.h:    void             align_disparity_to_other       (byte * disparity_aligned_to_other, const uint16_t * disparity_pixels, float disparity_scale, const rs2_intrinsics & disparity_intrin,
+./src/image.h:                                                     const rs2_extrinsics & disparity_to_other, const rs2_intrinsics & other_intrin);
+./src/image.h:    void             align_other_to_z               (byte * other_aligned_to_z, const uint16_t * z_pixels, float z_scale, const rs2_intrinsics & z_intrin,
+./src/image.h:                                                     const rs2_extrinsics & z_to_other, const rs2_intrinsics & other_intrin, const byte * other_pixels, rs2_format other_format);
+./src/image.h:    void             align_other_to_disparity       (byte * other_aligned_to_disparity, const uint16_t * disparity_pixels, float disparity_scale, const rs2_intrinsics & disparity_intrin,
+./src/image.h:                                                     const rs2_extrinsics & disparity_to_other, const rs2_intrinsics & other_intrin, const byte * other_pixels, rs2_format other_format);
+./src/image.h:    std::vector<int> compute_rectification_table    (const rs2_intrinsics & rect_intrin, const rs2_extrinsics & rect_to_unrect, const rs2_intrinsics & unrect_intrin);
+./src/media/ros/ros_writer.h:            rs2_intrinsics intrinsics{};
+./src/media/ros/ros_reader.h:            rs2_intrinsics intrinsics{};
+./src/cuda/cuda-pointcloud.cuh:    void deproject_depth_cuda(float * points, const rs2_intrinsics & intrin, const uint16_t * depth, float depth_scale);
+./src/cuda/cuda-pointcloud.cu:void deproject_pixel_to_point_cuda(float points[3], const struct rs2_intrinsics * intrin, const float pixel[2], float depth) {
+./src/cuda/cuda-pointcloud.cu://void kernel_deproject_depth_cuda(float * points, const rs2_intrinsics & intrin, const uint16_t * depth, std::function<uint16_t(float)> map_depth)
+./src/cuda/cuda-pointcloud.cu:void kernel_deproject_depth_cuda(float * points, const rs2_intrinsics* intrin, const uint16_t * depth, float depth_scale)
+./src/cuda/cuda-pointcloud.cu:void rscuda::deproject_depth_cuda(float * points, const rs2_intrinsics & intrin, const uint16_t * depth, float depth_scale)
+./src/cuda/cuda-pointcloud.cu:    rs2_intrinsics* dev_intrin = 0;
+./src/cuda/cuda-pointcloud.cu:    result = cudaMalloc(&dev_intrin, sizeof(rs2_intrinsics));
+./src/cuda/cuda-pointcloud.cu:    result = cudaMemcpy(dev_intrin, &intrin, sizeof(rs2_intrinsics), cudaMemcpyHostToDevice);
+./src/cuda/cuda-pointcloud.cuh:    void deproject_depth_cuda(float * points, const rs2_intrinsics & intrin, const uint16_t * depth, float depth_scale);
+./src/cuda/cuda-pointcloud.cu:void deproject_pixel_to_point_cuda(float points[3], const struct rs2_intrinsics * intrin, const float pixel[2], float depth) {
+./src/cuda/cuda-pointcloud.cu://void kernel_deproject_depth_cuda(float * points, const rs2_intrinsics & intrin, const uint16_t * depth, std::function<uint16_t(float)> map_depth)
+./src/cuda/cuda-pointcloud.cu:void kernel_deproject_depth_cuda(float * points, const rs2_intrinsics* intrin, const uint16_t * depth, float depth_scale)
+./src/cuda/cuda-pointcloud.cu:void rscuda::deproject_depth_cuda(float * points, const rs2_intrinsics & intrin, const uint16_t * depth, float depth_scale)
+./src/cuda/cuda-pointcloud.cu:    rs2_intrinsics* dev_intrin = 0;
+./src/cuda/cuda-pointcloud.cu:    result = cudaMalloc(&dev_intrin, sizeof(rs2_intrinsics));
+./src/cuda/cuda-pointcloud.cu:    result = cudaMemcpy(dev_intrin, &intrin, sizeof(rs2_intrinsics), cudaMemcpyHostToDevice);
+./src/tm2/tm-device.cpp:    rs2_intrinsics tm2_sensor::get_intrinsics(const stream_profile& profile) const
+./src/tm2/tm-device.cpp:        rs2_intrinsics result;
+./src/tm2/tm-device.h:        rs2_intrinsics get_intrinsics(const stream_profile& profile) const override;
+./src/tm2/tm-device.cpp:    rs2_intrinsics tm2_sensor::get_intrinsics(const stream_profile& profile) const
+./src/tm2/tm-device.cpp:        rs2_intrinsics result;
+./src/tm2/tm-device.h:        rs2_intrinsics get_intrinsics(const stream_profile& profile) const override;
+./src/ivcam/sr300.cpp:    rs2_intrinsics sr300_camera::make_depth_intrinsics(const ivcam::camera_calib_params & c, const int2 & dims)
+./src/ivcam/sr300.cpp:    rs2_intrinsics sr300_camera::make_color_intrinsics(const ivcam::camera_calib_params & c, const int2 & dims)
+./src/ivcam/sr300.cpp:        rs2_intrinsics intrin = { dims.x, dims.y, c.Kt[0][2] * 0.5f + 0.5f,
+./src/ivcam/sr300.h:            rs2_intrinsics get_intrinsics(const stream_profile& profile) const override
+./src/ivcam/sr300.h:                            return rs2_intrinsics{};
+./src/ivcam/sr300.h:            rs2_intrinsics get_intrinsics(const stream_profile& profile) const override
+./src/ivcam/sr300.h:                            return rs2_intrinsics{};
+./src/ivcam/sr300.h:        static rs2_intrinsics make_depth_intrinsics(const ivcam::camera_calib_params& c, const int2& dims);
+./src/ivcam/sr300.h:        static rs2_intrinsics make_color_intrinsics(const ivcam::camera_calib_params& c, const int2& dims);
+./src/ivcam/sr300.cpp:    rs2_intrinsics sr300_camera::make_depth_intrinsics(const ivcam::camera_calib_params & c, const int2 & dims)
+./src/ivcam/sr300.cpp:    rs2_intrinsics sr300_camera::make_color_intrinsics(const ivcam::camera_calib_params & c, const int2 & dims)
+./src/ivcam/sr300.cpp:        rs2_intrinsics intrin = { dims.x, dims.y, c.Kt[0][2] * 0.5f + 0.5f,
+./src/ivcam/sr300.h:            rs2_intrinsics get_intrinsics(const stream_profile& profile) const override
+./src/ivcam/sr300.h:                            return rs2_intrinsics{};
+./src/ivcam/sr300.h:            rs2_intrinsics get_intrinsics(const stream_profile& profile) const override
+./src/ivcam/sr300.h:                            return rs2_intrinsics{};
+./src/ivcam/sr300.h:        static rs2_intrinsics make_depth_intrinsics(const ivcam::camera_calib_params& c, const int2& dims);
+./src/ivcam/sr300.h:        static rs2_intrinsics make_color_intrinsics(const ivcam::camera_calib_params& c, const int2& dims);
+./src/proc/occlusion-filter.h:        void set_texel_intrinsics(const rs2_intrinsics& in);
+./src/proc/occlusion-filter.h:        void set_depth_intrinsics(const rs2_intrinsics& in) { _depth_intrinsics = in; }
+./src/proc/occlusion-filter.h:        optional_value<rs2_intrinsics>              _depth_intrinsics;
+./src/proc/occlusion-filter.h:        optional_value<rs2_intrinsics>              _texels_intrinsics;
+./src/proc/align.cpp:    inline void distorte_x_y(const __m128 & x, const __m128 & y, __m128 * distorted_x, __m128 * distorted_y, const rs2_intrinsics& to)
+./src/proc/align.cpp:    inline void distorte_x_y<RS2_DISTORTION_MODIFIED_BROWN_CONRADY>(const __m128& x, const __m128& y, __m128* distorted_x, __m128* distorted_y, const rs2_intrinsics& to)
+./src/proc/align.cpp:        const rs2_intrinsics& to,
+./src/proc/align.cpp:    image_transform::image_transform(const rs2_intrinsics& from, float depth_scale)
+./src/proc/align.cpp:    void image_transform::align_depth_to_other(const uint16_t* z_pixels, uint16_t* dest, int bpp, const rs2_intrinsics& depth, const rs2_intrinsics& to,
+./src/proc/align.cpp:    inline void image_transform::move_depth_to_other(const uint16_t* z_pixels, uint16_t* dest, const rs2_intrinsics& to,
+./src/proc/align.cpp:    void image_transform::align_other_to_depth(const uint16_t* z_pixels, const byte* source, byte* dest, int bpp, const rs2_intrinsics& to,
+./src/proc/align.cpp:    bool is_special_resolution(const rs2_intrinsics& depth, const rs2_intrinsics& to)
+./src/proc/align.cpp:    inline void image_transform::align_depth_to_other_sse(const uint16_t * z_pixels, uint16_t * dest, const rs2_intrinsics& depth, const rs2_intrinsics& to,
+./src/proc/align.cpp:    inline void image_transform::align_other_to_depth_sse(const uint16_t * z_pixels, const byte * source, byte * dest, int bpp, const rs2_intrinsics& to,
+./src/proc/align.cpp:        T* dest, const rs2_intrinsics& to,
+./src/proc/align.cpp:    void align_images(const rs2_intrinsics& depth_intrin, const rs2_extrinsics& depth_to_other,
+./src/proc/align.cpp:        const rs2_intrinsics& other_intrin, GET_DEPTH get_depth, TRANSFER_PIXEL transfer_pixel)
+./src/proc/align.cpp:    void align_z_to_other(byte* z_aligned_to_other, const uint16_t* z_pixels, float z_scale, const rs2_intrinsics& z_intrin, const rs2_extrinsics& z_to_other, const rs2_intrinsics& other_intrin)
+./src/proc/align.cpp:    void align_other_to_depth_bytes(byte* other_aligned_to_depth, GET_DEPTH get_depth, const rs2_intrinsics& depth_intrin, const rs2_extrinsics& depth_to_other, const rs2_intrinsics& other_intrin, const byte* other_pixels)
+./src/proc/align.cpp:    void align_other_to_depth(byte* other_aligned_to_depth, GET_DEPTH get_depth, const rs2_intrinsics& depth_intrin, const rs2_extrinsics & depth_to_other, const rs2_intrinsics& other_intrin, const byte* other_pixels, rs2_format other_format)
+./src/proc/align.cpp:    void align_other_to_z(byte* other_aligned_to_z, const uint16_t* z_pixels, float z_scale, const rs2_intrinsics& z_intrin, const rs2_extrinsics& z_to_other, const rs2_intrinsics& other_intrin, const byte* other_pixels, rs2_format other_format)
+./src/proc/align.cpp:        rs2_intrinsics depth_intrinsics = depth_profile.get_intrinsics();
+./src/proc/align.cpp:            rs2_intrinsics other_intrinsics = other_profile.get_intrinsics();
+./src/proc/align.h:        image_transform(const rs2_intrinsics& from,
+./src/proc/align.h:            const rs2_intrinsics& depth,
+./src/proc/align.h:            const rs2_intrinsics& to,
+./src/proc/align.h:            byte* dest, int bpp, const rs2_intrinsics& to,
+./src/proc/align.h:        const rs2_intrinsics _depth;
+./src/proc/align.h:            uint16_t* dest, const rs2_intrinsics& depth,
+./src/proc/align.h:            const rs2_intrinsics& to,
+./src/proc/align.h:            byte* dest, int bpp, const rs2_intrinsics& to,
+./src/proc/align.h:            uint16_t* dest, const rs2_intrinsics& to,
+./src/proc/align.h:            T* dest, const rs2_intrinsics& to,
+./src/proc/pointcloud.cpp:    template<class MAP_DEPTH> void deproject_depth(float * points, const rs2_intrinsics & intrin, const uint16_t * depth, MAP_DEPTH map_depth)
+./src/proc/pointcloud.cpp:    const float3 * depth_to_points(uint8_t* image, const rs2_intrinsics &depth_intrinsics, const uint16_t * depth_image, float depth_scale)
+./src/proc/pointcloud.cpp:    float2 project(const rs2_intrinsics *intrin, const float3 & point) { float2 pixel = {}; rs2_project_point_to_pixel(&pixel.x, intrin, &point.x); return pixel; }
+./src/proc/pointcloud.cpp:    float2 pixel_to_texcoord(const rs2_intrinsics *intrin, const float2 & pixel) { return{ pixel.x / (intrin->width), pixel.y / (intrin->height) }; }
+./src/proc/pointcloud.cpp:    float2 project_to_texcoord(const rs2_intrinsics *intrin, const float3 & point) { return pixel_to_texcoord(intrin, project(intrin, point)); }
+./src/proc/pointcloud.cpp:            _depth_intrinsics = optional_value<rs2_intrinsics>();
+./src/proc/pointcloud.cpp:        _other_intrinsics = optional_value<rs2_intrinsics>();
+./src/proc/pointcloud.cpp:        const rs2_intrinsics &other_intrinsics,
+./src/proc/pointcloud.cpp:        const rs2_intrinsics &other_intrinsics,
+./src/proc/pointcloud.cpp:        rs2_intrinsics mapped_intr;
+./src/proc/pointcloud.h:        optional_value<rs2_intrinsics>         _depth_intrinsics;
+./src/proc/pointcloud.h:        optional_value<rs2_intrinsics>         _other_intrinsics;
+./src/proc/disparity-transform.cpp:            rs2_intrinsics src_intrin   = src_vspi->get_intrinsics();
+./src/proc/occlusion-filter.cpp:    void occlusion_filter::set_texel_intrinsics(const rs2_intrinsics& in)
+./src/proc/decimation-filter.cpp:                rs2_intrinsics tgt_intrin = tgt_vspi->get_intrinsics();
+./src/proc/decimation-filter.cpp:            rs2_intrinsics src_intrin = src_vspi->get_intrinsics();
+./src/proc/decimation-filter.cpp:            rs2_intrinsics tgt_intrin = tgt_vspi->get_intrinsics();
+./src/proc/occlusion-filter.h:        void set_texel_intrinsics(const rs2_intrinsics& in);
+./src/proc/occlusion-filter.h:        void set_depth_intrinsics(const rs2_intrinsics& in) { _depth_intrinsics = in; }
+./src/proc/occlusion-filter.h:        optional_value<rs2_intrinsics>              _depth_intrinsics;
+./src/proc/occlusion-filter.h:        optional_value<rs2_intrinsics>              _texels_intrinsics;
+./src/proc/align.cpp:    inline void distorte_x_y(const __m128 & x, const __m128 & y, __m128 * distorted_x, __m128 * distorted_y, const rs2_intrinsics& to)
+./src/proc/align.cpp:    inline void distorte_x_y<RS2_DISTORTION_MODIFIED_BROWN_CONRADY>(const __m128& x, const __m128& y, __m128* distorted_x, __m128* distorted_y, const rs2_intrinsics& to)
+./src/proc/align.cpp:        const rs2_intrinsics& to,
+./src/proc/align.cpp:    image_transform::image_transform(const rs2_intrinsics& from, float depth_scale)
+./src/proc/align.cpp:    void image_transform::align_depth_to_other(const uint16_t* z_pixels, uint16_t* dest, int bpp, const rs2_intrinsics& depth, const rs2_intrinsics& to,
+./src/proc/align.cpp:    inline void image_transform::move_depth_to_other(const uint16_t* z_pixels, uint16_t* dest, const rs2_intrinsics& to,
+./src/proc/align.cpp:    void image_transform::align_other_to_depth(const uint16_t* z_pixels, const byte* source, byte* dest, int bpp, const rs2_intrinsics& to,
+./src/proc/align.cpp:    bool is_special_resolution(const rs2_intrinsics& depth, const rs2_intrinsics& to)
+./src/proc/align.cpp:    inline void image_transform::align_depth_to_other_sse(const uint16_t * z_pixels, uint16_t * dest, const rs2_intrinsics& depth, const rs2_intrinsics& to,
+./src/proc/align.cpp:    inline void image_transform::align_other_to_depth_sse(const uint16_t * z_pixels, const byte * source, byte * dest, int bpp, const rs2_intrinsics& to,
+./src/proc/align.cpp:        T* dest, const rs2_intrinsics& to,
+./src/proc/align.cpp:    void align_images(const rs2_intrinsics& depth_intrin, const rs2_extrinsics& depth_to_other,
+./src/proc/align.cpp:        const rs2_intrinsics& other_intrin, GET_DEPTH get_depth, TRANSFER_PIXEL transfer_pixel)
+./src/proc/align.cpp:    void align_z_to_other(byte* z_aligned_to_other, const uint16_t* z_pixels, float z_scale, const rs2_intrinsics& z_intrin, const rs2_extrinsics& z_to_other, const rs2_intrinsics& other_intrin)
+./src/proc/align.cpp:    void align_other_to_depth_bytes(byte* other_aligned_to_depth, GET_DEPTH get_depth, const rs2_intrinsics& depth_intrin, const rs2_extrinsics& depth_to_other, const rs2_intrinsics& other_intrin, const byte* other_pixels)
+./src/proc/align.cpp:    void align_other_to_depth(byte* other_aligned_to_depth, GET_DEPTH get_depth, const rs2_intrinsics& depth_intrin, const rs2_extrinsics & depth_to_other, const rs2_intrinsics& other_intrin, const byte* other_pixels, rs2_format other_format)
+./src/proc/align.cpp:    void align_other_to_z(byte* other_aligned_to_z, const uint16_t* z_pixels, float z_scale, const rs2_intrinsics& z_intrin, const rs2_extrinsics& z_to_other, const rs2_intrinsics& other_intrin, const byte* other_pixels, rs2_format other_format)
+./src/proc/align.cpp:        rs2_intrinsics depth_intrinsics = depth_profile.get_intrinsics();
+./src/proc/align.cpp:            rs2_intrinsics other_intrinsics = other_profile.get_intrinsics();
+./src/proc/align.h:        image_transform(const rs2_intrinsics& from,
+./src/proc/align.h:            const rs2_intrinsics& depth,
+./src/proc/align.h:            const rs2_intrinsics& to,
+./src/proc/align.h:            byte* dest, int bpp, const rs2_intrinsics& to,
+./src/proc/align.h:        const rs2_intrinsics _depth;
+./src/proc/align.h:            uint16_t* dest, const rs2_intrinsics& depth,
+./src/proc/align.h:            const rs2_intrinsics& to,
+./src/proc/align.h:            byte* dest, int bpp, const rs2_intrinsics& to,
+./src/proc/align.h:            uint16_t* dest, const rs2_intrinsics& to,
+./src/proc/align.h:            T* dest, const rs2_intrinsics& to,
+./src/proc/pointcloud.cpp:    template<class MAP_DEPTH> void deproject_depth(float * points, const rs2_intrinsics & intrin, const uint16_t * depth, MAP_DEPTH map_depth)
+./src/proc/pointcloud.cpp:    const float3 * depth_to_points(uint8_t* image, const rs2_intrinsics &depth_intrinsics, const uint16_t * depth_image, float depth_scale)
+./src/proc/pointcloud.cpp:    float2 project(const rs2_intrinsics *intrin, const float3 & point) { float2 pixel = {}; rs2_project_point_to_pixel(&pixel.x, intrin, &point.x); return pixel; }
+./src/proc/pointcloud.cpp:    float2 pixel_to_texcoord(const rs2_intrinsics *intrin, const float2 & pixel) { return{ pixel.x / (intrin->width), pixel.y / (intrin->height) }; }
+./src/proc/pointcloud.cpp:    float2 project_to_texcoord(const rs2_intrinsics *intrin, const float3 & point) { return pixel_to_texcoord(intrin, project(intrin, point)); }
+./src/proc/pointcloud.cpp:            _depth_intrinsics = optional_value<rs2_intrinsics>();
+./src/proc/pointcloud.cpp:        _other_intrinsics = optional_value<rs2_intrinsics>();
+./src/proc/pointcloud.cpp:        const rs2_intrinsics &other_intrinsics,
+./src/proc/pointcloud.cpp:        const rs2_intrinsics &other_intrinsics,
+./src/proc/pointcloud.cpp:        rs2_intrinsics mapped_intr;
+./src/proc/pointcloud.h:        optional_value<rs2_intrinsics>         _depth_intrinsics;
+./src/proc/pointcloud.h:        optional_value<rs2_intrinsics>         _other_intrinsics;
+./src/proc/disparity-transform.cpp:            rs2_intrinsics src_intrin   = src_vspi->get_intrinsics();
+./src/proc/occlusion-filter.cpp:    void occlusion_filter::set_texel_intrinsics(const rs2_intrinsics& in)
+./src/proc/decimation-filter.cpp:                rs2_intrinsics tgt_intrin = tgt_vspi->get_intrinsics();
+./src/proc/decimation-filter.cpp:            rs2_intrinsics src_intrin = src_vspi->get_intrinsics();
+./src/proc/decimation-filter.cpp:            rs2_intrinsics tgt_intrin = tgt_vspi->get_intrinsics();
+./src/types.h:    inline rs2_intrinsics pad_crop_intrinsics(const rs2_intrinsics & i, int pad_crop)
+./src/types.h:    inline rs2_intrinsics scale_intrinsics(const rs2_intrinsics & i, int width, int height)
+./src/types.h:    inline bool operator == (const rs2_intrinsics & a, const rs2_intrinsics & b) { return std::memcmp(&a, &b, sizeof(a)) == 0; }
+./src/ds5/ds5-color.h:        rs2_intrinsics get_intrinsics(const stream_profile& profile) const override;
+./src/ds5/ds5-device.cpp:        rs2_intrinsics get_intrinsics(const stream_profile& profile) const override
+./src/ds5/ds5-device.cpp:                            return rs2_intrinsics{};
+./src/ds5/ds5-device.cpp:                            return rs2_intrinsics{};
+./src/ds5/ds5-motion.cpp:        rs2_intrinsics get_intrinsics(const stream_profile& profile) const override
+./src/ds5/ds5-motion.cpp:                        return rs2_intrinsics{};
+./src/ds5/ds5-private.cpp:        rs2_intrinsics get_intrinsic_by_resolution_coefficients_table(const std::vector<uint8_t> & raw_data, uint32_t width, uint32_t height)
+./src/ds5/ds5-private.cpp:            rs2_intrinsics intrinsics;
+./src/ds5/ds5-private.cpp:        rs2_intrinsics get_intrinsic_fisheye_table(const std::vector<uint8_t>& raw_data, uint32_t width, uint32_t height)
+./src/ds5/ds5-private.cpp:             rs2_intrinsics intrinsics;
+./src/ds5/ds5-private.cpp:        rs2_intrinsics get_color_stream_intrinsic(const std::vector<uint8_t>& raw_data, uint32_t width, uint32_t height)
+./src/ds5/ds5-private.cpp:            rs2_intrinsics calc_intrinsic{
+./src/ds5/ds5-private.cpp:        rs2_intrinsics get_intrinsic_by_resolution(const vector<uint8_t> & raw_data, calibration_table_id table_id, uint32_t width, uint32_t height)
+./src/ds5/ds5-private.h:            rs2_intrinsics   left_imager_intrinsic;
+./src/ds5/ds5-private.h:            rs2_intrinsics   right_imager_intrinsic;
+./src/ds5/ds5-private.h:            rs2_intrinsics   depth_intrinsic[max_ds5_rect_resolutions];
+./src/ds5/ds5-private.h:        rs2_intrinsics get_intrinsic_by_resolution(const std::vector<uint8_t>& raw_data, calibration_table_id table_id, uint32_t width, uint32_t height);
+./src/ds5/ds5-private.h:        rs2_intrinsics get_intrinsic_by_resolution_coefficients_table(const std::vector<uint8_t>& raw_data, uint32_t width, uint32_t height);
+./src/ds5/ds5-private.h:        rs2_intrinsics get_intrinsic_fisheye_table(const std::vector<uint8_t>& raw_data, uint32_t width, uint32_t height);
+./src/ds5/ds5-color.cpp:    rs2_intrinsics ds5_color_sensor::get_intrinsics(const stream_profile& profile) const
+./src/ds5/ds5-color.cpp:                    return rs2_intrinsics{};
+./src/ds5/ds5-color.h:        rs2_intrinsics get_intrinsics(const stream_profile& profile) const override;
+./src/ds5/ds5-device.cpp:        rs2_intrinsics get_intrinsics(const stream_profile& profile) const override
+./src/ds5/ds5-device.cpp:                            return rs2_intrinsics{};
+./src/ds5/ds5-device.cpp:                            return rs2_intrinsics{};
+./src/ds5/ds5-motion.cpp:        rs2_intrinsics get_intrinsics(const stream_profile& profile) const override
+./src/ds5/ds5-motion.cpp:                        return rs2_intrinsics{};
+./src/ds5/ds5-private.cpp:        rs2_intrinsics get_intrinsic_by_resolution_coefficients_table(const std::vector<uint8_t> & raw_data, uint32_t width, uint32_t height)
+./src/ds5/ds5-private.cpp:            rs2_intrinsics intrinsics;
+./src/ds5/ds5-private.cpp:        rs2_intrinsics get_intrinsic_fisheye_table(const std::vector<uint8_t>& raw_data, uint32_t width, uint32_t height)
+./src/ds5/ds5-private.cpp:             rs2_intrinsics intrinsics;
+./src/ds5/ds5-private.cpp:        rs2_intrinsics get_color_stream_intrinsic(const std::vector<uint8_t>& raw_data, uint32_t width, uint32_t height)
+./src/ds5/ds5-private.cpp:            rs2_intrinsics calc_intrinsic{
+./src/ds5/ds5-private.cpp:        rs2_intrinsics get_intrinsic_by_resolution(const vector<uint8_t> & raw_data, calibration_table_id table_id, uint32_t width, uint32_t height)
+./src/ds5/ds5-private.h:            rs2_intrinsics   left_imager_intrinsic;
+./src/ds5/ds5-private.h:            rs2_intrinsics   right_imager_intrinsic;
+./src/ds5/ds5-private.h:            rs2_intrinsics   depth_intrinsic[max_ds5_rect_resolutions];
+./src/ds5/ds5-private.h:        rs2_intrinsics get_intrinsic_by_resolution(const std::vector<uint8_t>& raw_data, calibration_table_id table_id, uint32_t width, uint32_t height);
+./src/ds5/ds5-private.h:        rs2_intrinsics get_intrinsic_by_resolution_coefficients_table(const std::vector<uint8_t>& raw_data, uint32_t width, uint32_t height);
+./src/ds5/ds5-private.h:        rs2_intrinsics get_intrinsic_fisheye_table(const std::vector<uint8_t>& raw_data, uint32_t width, uint32_t height);
+./src/ds5/ds5-color.cpp:    rs2_intrinsics ds5_color_sensor::get_intrinsics(const stream_profile& profile) const
+./src/ds5/ds5-color.cpp:                    return rs2_intrinsics{};
+./src/context.cpp:        virtual rs2_intrinsics get_intrinsics(unsigned int subdevice, const stream_profile& profile) const
+./src/context.cpp:            return rs2_intrinsics {};
+./src/stream.h:              _calc_intrinsics([]() -> rs2_intrinsics { throw not_implemented_exception("No intrinsics are available for this stream profile!"); }),
+./src/stream.h:        rs2_intrinsics get_intrinsics() const override { return _calc_intrinsics(); }
+./src/stream.h:        void set_intrinsics(std::function<rs2_intrinsics()> calc) override { _calc_intrinsics = calc; }
+./src/stream.h:            std::function<rs2_intrinsics()> int_func = _calc_intrinsics;
+./src/stream.h:        std::function<rs2_intrinsics()> _calc_intrinsics;
+./src/rs.cpp:void rs2_get_video_stream_intrinsics(const rs2_stream_profile* from, rs2_intrinsics* intr, rs2_error** error) BEGIN_API_CALL
+./src/core/video.h:        virtual rs2_intrinsics get_intrinsics(const stream_profile& profile) const = 0;
+./src/core/video.h:        virtual rs2_intrinsics get_intrinsics() const = 0;
+./src/core/video.h:        virtual void set_intrinsics(std::function<rs2_intrinsics()> calc) = 0;
+./src/core/video.h:        virtual rs2_intrinsics get_intrinsics(const stream_profile& profile) const = 0;
+./src/core/video.h:        virtual rs2_intrinsics get_intrinsics() const = 0;
+./src/core/video.h:        virtual void set_intrinsics(std::function<rs2_intrinsics()> calc) = 0;
+./src/l500/l500.h:            rs2_intrinsics get_intrinsics(const stream_profile& profile) const override
+./src/l500/l500.h:                rs2_intrinsics intrinsics;
+./src/l500/l500.h:                            return rs2_intrinsics{};
+./src/l500/l500.h:            rs2_intrinsics get_intrinsics(const stream_profile& profile) const override
+./src/l500/l500.h:                rs2_intrinsics intrinsics;
+./src/l500/l500.h:                            return rs2_intrinsics{};
+./src/image.h:    void             deproject_z                    (float * points, const rs2_intrinsics & z_intrin, const uint16_t * z_pixels, float z_scale);
+./src/image.h:    void             deproject_disparity            (float * points, const rs2_intrinsics & disparity_intrin, const uint16_t * disparity_pixels, float disparity_scale);
+./src/image.h:    void             align_z_to_other               (byte * z_aligned_to_other, const uint16_t * z_pixels, float z_scale, const rs2_intrinsics & z_intrin,
+./src/image.h:                                                     const rs2_extrinsics & z_to_other, const rs2_intrinsics & other_intrin);
+./src/image.h:    void             align_disparity_to_other       (byte * disparity_aligned_to_other, const uint16_t * disparity_pixels, float disparity_scale, const rs2_intrinsics & disparity_intrin,
+./src/image.h:                                                     const rs2_extrinsics & disparity_to_other, const rs2_intrinsics & other_intrin);
+./src/image.h:    void             align_other_to_z               (byte * other_aligned_to_z, const uint16_t * z_pixels, float z_scale, const rs2_intrinsics & z_intrin,
+./src/image.h:                                                     const rs2_extrinsics & z_to_other, const rs2_intrinsics & other_intrin, const byte * other_pixels, rs2_format other_format);
+./src/image.h:    void             align_other_to_disparity       (byte * other_aligned_to_disparity, const uint16_t * disparity_pixels, float disparity_scale, const rs2_intrinsics & disparity_intrin,
+./src/image.h:                                                     const rs2_extrinsics & disparity_to_other, const rs2_intrinsics & other_intrin, const byte * other_pixels, rs2_format other_format);
+./src/image.h:    std::vector<int> compute_rectification_table    (const rs2_intrinsics & rect_intrin, const rs2_extrinsics & rect_to_unrect, const rs2_intrinsics & unrect_intrin);
+./src/media/ros/ros_writer.h:            rs2_intrinsics intrinsics{};
+./src/media/ros/ros_reader.h:            rs2_intrinsics intrinsics{};
+./src/media/ros/ros_writer.h:            rs2_intrinsics intrinsics{};
+./src/media/ros/ros_reader.h:            rs2_intrinsics intrinsics{};
+./src/media/ros/ros_writer.h:            rs2_intrinsics intrinsics{};
+./src/media/ros/ros_reader.h:            rs2_intrinsics intrinsics{};
+./examples/software-device/rs-software-device.cpp:    rs2_intrinsics create_texture_intrinsics()
+./examples/software-device/rs-software-device.cpp:        rs2_intrinsics intrinsics = { color_frame.x, color_frame.y,
+./examples/software-device/rs-software-device.cpp:    rs2_intrinsics create_depth_intrinsics()
+./examples/software-device/rs-software-device.cpp:        rs2_intrinsics intrinsics = { depth_frame.x, depth_frame.y,
+./examples/software-device/rs-software-device.cpp:    rs2_intrinsics color_intrinsics = app_data.create_texture_intrinsics();
+./examples/software-device/rs-software-device.cpp:    rs2_intrinsics depth_intrinsics = app_data.create_depth_intrinsics();
+./examples/software-device/readme.md:rs2_intrinsics depth_intrinsics{ W, H, W / 2, H / 2, W , H , RS2_DISTORTION_BROWN_CONRADY ,{ 0,0,0,0,0 } };
+./examples/software-device/readme.md:rs2_intrinsics color_intrinsics = { texture.x, texture.y,
+./examples/sensor-control/api_how_to.h:                rs2_intrinsics intrinsics = video_stream.get_intrinsics();
+./examples/measure/readme.md:float dist_3d(const rs2_intrinsics& intr, const rs2::depth_frame& frame, pixel u, pixel v)
+./examples/measure/rs-measure.cpp:    rs2_intrinsics intr = frame.get_profile().as<rs2::video_stream_profile>().get_intrinsics(); // Calibration data
+./examples/software-device/rs-software-device.cpp:    rs2_intrinsics create_texture_intrinsics()
+./examples/software-device/rs-software-device.cpp:        rs2_intrinsics intrinsics = { color_frame.x, color_frame.y,
+./examples/software-device/rs-software-device.cpp:    rs2_intrinsics create_depth_intrinsics()
+./examples/software-device/rs-software-device.cpp:        rs2_intrinsics intrinsics = { depth_frame.x, depth_frame.y,
+./examples/software-device/rs-software-device.cpp:    rs2_intrinsics color_intrinsics = app_data.create_texture_intrinsics();
+./examples/software-device/rs-software-device.cpp:    rs2_intrinsics depth_intrinsics = app_data.create_depth_intrinsics();
+./examples/software-device/readme.md:rs2_intrinsics depth_intrinsics{ W, H, W / 2, H / 2, W , H , RS2_DISTORTION_BROWN_CONRADY ,{ 0,0,0,0,0 } };
+./examples/software-device/readme.md:rs2_intrinsics color_intrinsics = { texture.x, texture.y,
+./examples/software-device/rs-software-device.cpp:    rs2_intrinsics create_texture_intrinsics()
+./examples/software-device/rs-software-device.cpp:        rs2_intrinsics intrinsics = { color_frame.x, color_frame.y,
+./examples/software-device/rs-software-device.cpp:    rs2_intrinsics create_depth_intrinsics()
+./examples/software-device/rs-software-device.cpp:        rs2_intrinsics intrinsics = { depth_frame.x, depth_frame.y,
+./examples/software-device/rs-software-device.cpp:    rs2_intrinsics color_intrinsics = app_data.create_texture_intrinsics();
+./examples/software-device/rs-software-device.cpp:    rs2_intrinsics depth_intrinsics = app_data.create_depth_intrinsics();
+./examples/software-device/readme.md:rs2_intrinsics depth_intrinsics{ W, H, W / 2, H / 2, W , H , RS2_DISTORTION_BROWN_CONRADY ,{ 0,0,0,0,0 } };
+./examples/software-device/readme.md:rs2_intrinsics color_intrinsics = { texture.x, texture.y,
+./examples/sensor-control/api_how_to.h:                rs2_intrinsics intrinsics = video_stream.get_intrinsics();
+./examples/sensor-control/api_how_to.h:                rs2_intrinsics intrinsics = video_stream.get_intrinsics();
+./examples/measure/readme.md:float dist_3d(const rs2_intrinsics& intr, const rs2::depth_frame& frame, pixel u, pixel v)
+./examples/measure/rs-measure.cpp:    rs2_intrinsics intr = frame.get_profile().as<rs2::video_stream_profile>().get_intrinsics(); // Calibration data
+./examples/measure/readme.md:float dist_3d(const rs2_intrinsics& intr, const rs2::depth_frame& frame, pixel u, pixel v)
+./examples/measure/rs-measure.cpp:    rs2_intrinsics intr = frame.get_profile().as<rs2::video_stream_profile>().get_intrinsics(); // Calibration data
+./tools/enumerate-devices/rs-enumerate-devices.cpp:void print(const rs2_intrinsics& intrinsics)
+./tools/enumerate-devices/rs-enumerate-devices.cpp:bool safe_get_intrinsics(const video_stream_profile& profile, rs2_intrinsics& intrinsics)
+./tools/enumerate-devices/rs-enumerate-devices.cpp:bool operator ==(const rs2_intrinsics& lhs,
+./tools/enumerate-devices/rs-enumerate-devices.cpp:                 const rs2_intrinsics& rhs)
+./tools/enumerate-devices/rs-enumerate-devices.cpp:            std::map<stream_and_resolution, std::vector<std::pair<std::set<rs2_format>, rs2_intrinsics>>> intrinsics_map;
+./tools/enumerate-devices/rs-enumerate-devices.cpp:                        rs2_intrinsics intrinsics{};
+./tools/enumerate-devices/rs-enumerate-devices.cpp:                            auto it = std::find_if((intrinsics_map[stream_res]).begin(), (intrinsics_map[stream_res]).end(), [&](const std::pair<std::set<rs2_format>, rs2_intrinsics>& kvp) {
+./tools/enumerate-devices/rs-enumerate-devices.cpp:                    if (intrinsics.second == rs2_intrinsics{})
+./tools/depth-quality/depth-quality-model.h:            void update_stream_attributes(const rs2_intrinsics &intrinsic, float scale_units, float baseline)
+./tools/depth-quality/depth-quality-model.h:            rs2_intrinsics          _depth_intrinsic;
+./tools/depth-quality/depth-metrics.h:        inline double evaluate_pixel(const plane& p, const rs2_intrinsics* intrin, float x, float y, float distance, float3& output)
+./tools/depth-quality/depth-metrics.h:        inline float3 approximate_intersection(const plane& p, const rs2_intrinsics* intrin, float x, float y, float min, float max)
+./tools/depth-quality/depth-metrics.h:        inline float3 approximate_intersection(const plane& p, const rs2_intrinsics* intrin, float x, float y)
+./tools/depth-quality/depth-metrics.h:            const rs2_intrinsics * intrin,
+./tools/depth-quality/depth-quality-model.cpp:                            rs2_intrinsics intrin{};
+./tools/enumerate-devices/rs-enumerate-devices.cpp:void print(const rs2_intrinsics& intrinsics)
+./tools/enumerate-devices/rs-enumerate-devices.cpp:bool safe_get_intrinsics(const video_stream_profile& profile, rs2_intrinsics& intrinsics)
+./tools/enumerate-devices/rs-enumerate-devices.cpp:bool operator ==(const rs2_intrinsics& lhs,
+./tools/enumerate-devices/rs-enumerate-devices.cpp:                 const rs2_intrinsics& rhs)
+./tools/enumerate-devices/rs-enumerate-devices.cpp:            std::map<stream_and_resolution, std::vector<std::pair<std::set<rs2_format>, rs2_intrinsics>>> intrinsics_map;
+./tools/enumerate-devices/rs-enumerate-devices.cpp:                        rs2_intrinsics intrinsics{};
+./tools/enumerate-devices/rs-enumerate-devices.cpp:                            auto it = std::find_if((intrinsics_map[stream_res]).begin(), (intrinsics_map[stream_res]).end(), [&](const std::pair<std::set<rs2_format>, rs2_intrinsics>& kvp) {
+./tools/enumerate-devices/rs-enumerate-devices.cpp:                    if (intrinsics.second == rs2_intrinsics{})
+./tools/enumerate-devices/rs-enumerate-devices.cpp:void print(const rs2_intrinsics& intrinsics)
+./tools/enumerate-devices/rs-enumerate-devices.cpp:bool safe_get_intrinsics(const video_stream_profile& profile, rs2_intrinsics& intrinsics)
+./tools/enumerate-devices/rs-enumerate-devices.cpp:bool operator ==(const rs2_intrinsics& lhs,
+./tools/enumerate-devices/rs-enumerate-devices.cpp:                 const rs2_intrinsics& rhs)
+./tools/enumerate-devices/rs-enumerate-devices.cpp:            std::map<stream_and_resolution, std::vector<std::pair<std::set<rs2_format>, rs2_intrinsics>>> intrinsics_map;
+./tools/enumerate-devices/rs-enumerate-devices.cpp:                        rs2_intrinsics intrinsics{};
+./tools/enumerate-devices/rs-enumerate-devices.cpp:                            auto it = std::find_if((intrinsics_map[stream_res]).begin(), (intrinsics_map[stream_res]).end(), [&](const std::pair<std::set<rs2_format>, rs2_intrinsics>& kvp) {
+./tools/enumerate-devices/rs-enumerate-devices.cpp:                    if (intrinsics.second == rs2_intrinsics{})
+./tools/depth-quality/depth-quality-model.h:            void update_stream_attributes(const rs2_intrinsics &intrinsic, float scale_units, float baseline)
+./tools/depth-quality/depth-quality-model.h:            rs2_intrinsics          _depth_intrinsic;
+./tools/depth-quality/depth-metrics.h:        inline double evaluate_pixel(const plane& p, const rs2_intrinsics* intrin, float x, float y, float distance, float3& output)
+./tools/depth-quality/depth-metrics.h:        inline float3 approximate_intersection(const plane& p, const rs2_intrinsics* intrin, float x, float y, float min, float max)
+./tools/depth-quality/depth-metrics.h:        inline float3 approximate_intersection(const plane& p, const rs2_intrinsics* intrin, float x, float y)
+./tools/depth-quality/depth-metrics.h:            const rs2_intrinsics * intrin,
+./tools/depth-quality/depth-quality-model.cpp:                            rs2_intrinsics intrin{};
+./tools/depth-quality/depth-quality-model.h:            void update_stream_attributes(const rs2_intrinsics &intrinsic, float scale_units, float baseline)
+./tools/depth-quality/depth-quality-model.h:            rs2_intrinsics          _depth_intrinsic;
+./tools/depth-quality/depth-metrics.h:        inline double evaluate_pixel(const plane& p, const rs2_intrinsics* intrin, float x, float y, float distance, float3& output)
+./tools/depth-quality/depth-metrics.h:        inline float3 approximate_intersection(const plane& p, const rs2_intrinsics* intrin, float x, float y, float min, float max)
+./tools/depth-quality/depth-metrics.h:        inline float3 approximate_intersection(const plane& p, const rs2_intrinsics* intrin, float x, float y)
+./tools/depth-quality/depth-metrics.h:            const rs2_intrinsics * intrin,
+./tools/depth-quality/depth-quality-model.cpp:                            rs2_intrinsics intrin{};
