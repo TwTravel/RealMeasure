@@ -109,18 +109,22 @@ std::tuple<uint8_t, uint8_t, uint8_t> get_texcolor(rs2::video_frame texture, rs2
   texture_data[idx], texture_data[idx + 1], texture_data[idx + 2]);
 }
 
+
 void draw_3d_points(C24BitMap & alignPic, const rs2::video_frame& color , 
                      rs2::points points, double cx, double cy, double fx,double fy)
 {
 	int i;
 	auto vertices   = points.get_vertices();
-	auto tex_coords = points.get_texture_coordinates();
+	//auto tex_coords = points.get_texture_coordinates();
 	alignPic.FormatF(color_w , color_h);
 	
 	gCAMERA_CENTER_X_POS = cx; 
     gCAMERA_CENTER_Y_POS = cy; 
 	gCAMERA_CENTER_X_SCALE = fx; 
 	gCAMERA_CENTER_Y_SCALE = fy;
+	
+	uint8_t* p_color_frame = reinterpret_cast<uint8_t*>(const_cast<void*>(color.get_data()));
+	
     for (int i = 0; i < points.size(); ++i)
 	{
 		double x,y,z;
@@ -133,22 +137,28 @@ void draw_3d_points(C24BitMap & alignPic, const rs2::video_frame& color ,
 		y2d = BOUND(y2d, 0, color_h - 1);
 		C24PixVal Pix = get_pix_color(alignPic, x2d, y2d);
 		
-		std::tuple<uint8_t, uint8_t, uint8_t> current_color;
+		char* ptr =  (char*)&p_color_frame[x2d * 3 + y2d * 640 * 3];
+		
+		/*std::tuple<uint8_t, uint8_t, uint8_t> current_color;
         current_color = get_texcolor(color, tex_coords[i]);
 		*Pix.r = std::get<0>(current_color);
 		*Pix.g = std::get<1>(current_color);
-		*Pix.b = std::get<2>(current_color);
+		*Pix.b = std::get<2>(current_color);*/
+		
+		*Pix.r = ptr[0];//std::get<0>(current_color);
+		*Pix.g = ptr[1];//std::get<1>(current_color);
+		*Pix.b = ptr[2];//std::get<2>(current_color);
 	}
 }
 
 int main(int argc, char * argv[]) try
 {
     // Create a simple OpenGL window for rendering:
-    window app(640, 480, "RealSense Pointcloud Example");
+    //KK window app(640, 480, "RealSense Pointcloud Example");
     // Construct an object to manage view state
-    glfw_state app_state;
+    //KK glfw_state app_state;
     // register callbacks to allow manipulation of the pointcloud
-    register_glfw_callbacks(app, app_state);
+    //KK register_glfw_callbacks(app, app_state);
 
     // Declare pointcloud object, for calculating pointclouds and texture mappings
     rs2::pointcloud pc;
@@ -169,7 +179,8 @@ int main(int argc, char * argv[]) try
 	//==========================================================
 	//rscamera = _rs_ctx.get_device( 0 );
 
-    while (app) // Application still alive?
+    //while (app) // Application still alive?
+	while(1)
     {
         // Wait for the next set of frames from the camera
         auto frames = pipe.wait_for_frames();
@@ -192,8 +203,7 @@ int main(int argc, char * argv[]) try
         float timefps = float(global_count) *1000000.0/ float( clock() - global_clock);
         printf("processing fps is %i, %.3f\n", global_count, timefps);
 	
-	 
-	 
+	  
 	    //########################################################################################
 		int i,j, count;
         CPic.FormatF(color_w, color_h);
@@ -222,7 +232,7 @@ int main(int argc, char * argv[]) try
 		adjust_image(CPic, gColorImg);
 		char filename[100];
 	    sprintf(filename, "subpic/camera%04i.bmp", global_count);
-		alignPic.Save(filename);
+		//alignPic.Save(filename);
 		//printf("%i,%i\n", width, height);
 		//gColorImg.Save(filename);
 		
@@ -232,6 +242,8 @@ int main(int argc, char * argv[]) try
 
         // Draw the pointcloud
         // draw_pointcloud(app.width(), app.height(), app_state, points);
+		 if(global_count> 50)
+	        break;
     }
 
     return EXIT_SUCCESS;
