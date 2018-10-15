@@ -15,6 +15,7 @@
 #define MIN_(a, b) ((a) < (b)) ? (a) : (b)))
 #define MAX_(a, b) ((a) > (b)) ? (a) : (b)))
 
+#include "rd_info.h"
 
 // Helper functions
 void register_glfw_callbacks(window& app, glfw_state& app_state);
@@ -74,31 +75,7 @@ void Map3dPt2XY(double X, double Y, double Z,
    y2d = double( Y/Z * gCAMERA_CENTER_Y_SCALE ) + gCAMERA_CENTER_Y_POS;
 } 
 
-/*
-   auto vertices = points.get_vertices();
-
-   for (int i = 0; i < points.size(); ++i)
-
-  {
-
-  cloud->points[i].x = vertices[i].x;
-   cloud->points[i].y = vertices[i].y;
-   cloud->points[i].z = vertices[i].z;
-
-   std::tuple<uint8_t, uint8_t, uint8_t> current_color;
-   current_color = get_texcolor(color, tex_coords[i]);
-
-   cloud->points[i].r = std::get<0>(current_color);
-   cloud->points[i].g = std::get<1>(current_color);
-   cloud->points[i].b = std::get<2>(current_color);
-   }
-
  
-
-   return cloud;
-}
-*/
-
 std::tuple<uint8_t, uint8_t, uint8_t> get_texcolor(rs2::video_frame texture, rs2::texture_coordinate texcoords)
 
 {
@@ -200,6 +177,9 @@ void draw_3d_points(C24BitMap & alignPic, const rs2::video_frame& color ,
 	double center_xx    = 0;
 	double center_yy    = 0;
 	int  i,j;
+	
+	Pt3d center_pos;
+	center_pos.X = center_pos.Y = center_pos.Z =0;
     for (i = 0; i < points.size(); ++i)
 	{
 		double x,y,z;
@@ -246,6 +226,10 @@ void draw_3d_points(C24BitMap & alignPic, const rs2::video_frame& color ,
 			 center_count ++;
 	         center_xx += x2d;
 	         center_yy += y2d;
+			 
+			 center_pos.X += x;
+			 center_pos.Y += y;
+			 center_pos.Z += z;
 		}
 		else
 		{
@@ -264,6 +248,10 @@ void draw_3d_points(C24BitMap & alignPic, const rs2::video_frame& color ,
 	center_xx /= center_count;
 	center_yy /= center_count;
 
+	center_pos.X /= center_count;
+	center_pos.Y /= center_count;
+	center_pos.Z /= center_count;
+	
      Loopi(10)
         Loopj(10)
 		{
