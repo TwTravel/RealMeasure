@@ -15,7 +15,8 @@
 #define MIN_(a, b) ((a) < (b)) ? (a) : (b)))
 #define MAX_(a, b) ((a) > (b)) ? (a) : (b)))
 
-#include "rd_info.h"
+#include  "rd_info.h"
+#include  "send_msg.h"
 
 // Helper functions
 void register_glfw_callbacks(window& app, glfw_state& app_state);
@@ -28,6 +29,17 @@ C24BitMap CPic, gColorImg;
 rs2_intrinsics  _color_intrin;
 rs2_device* rscamera;
 rs2_context _rs_ctx();
+
+
+void sendposition(Pt3d&cube_center)
+{
+	char message_buffer[200];
+    memset(message_buffer, 0, 200);
+    sprintf(message_buffer,"%.4lf,%.4lf,%.4lf",
+    cube_center.X , cube_center.Y , cube_center.Z );
+
+    SendSystemMsg(message_buffer, strlen(message_buffer));
+}
 
 void adjust_image(C24BitMap & CPic1, C24BitMap & CPic2)
 {
@@ -251,6 +263,8 @@ void draw_3d_points(C24BitMap & alignPic, const rs2::video_frame& color ,
 	center_pos.X /= center_count;
 	center_pos.Y /= center_count;
 	center_pos.Z /= center_count;
+	
+	center_pos  = Tranform2RobotAxis( center_pos );
 	
      Loopi(10)
         Loopj(10)
