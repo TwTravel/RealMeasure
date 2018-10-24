@@ -1,0 +1,1 @@
+g++ -DGPU -g -std=gnu++11 -I./depend -I./ -I ./include  -I /usr/local/cuda/include detector.cpp  ./depend/imgui.cpp ./depend/imgui_draw.cpp ./depend/imgui_impl_glfw.cpp -o  dectest  -lrealsense2 -lutil -lboost_iostreams -lboost_system -lboost_filesystem -lglut -lGLU -lGL -lglfw -lrt -lpthread -L ./ -ldarknet 

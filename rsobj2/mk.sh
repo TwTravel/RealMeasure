@@ -1,0 +1,1 @@
+g++ -DGPU -DOPENCV  -g -std=gnu++11 -I./depend -I./ rs-color.cpp -DGPU -I /usr/local/cuda/include -I ./include -o dark -L ./ -ldarknet  -lrealsense2 -lutil -lboost_iostreams -lboost_system -lboost_filesystem -lglut -lGLU -lGL -lglfw -lrt -lpthread
