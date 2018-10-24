@@ -73,7 +73,8 @@ void Img2OpencvMat(cv::Mat &mat, image&im) {
 			  for(i = 0; i < w; ++i){
 			    for(k = 0; k < c; ++k){
 			    int src_index = i + w*j + w*h*k;
-                 *data++= im.data[src_index];
+                 *data= im.data[src_index]*255.0;
+				 data ++;
             } // end of row                 
       }
     }
@@ -95,7 +96,7 @@ void OpencvMat2Img(cv::Mat &mat, image&im) {
 			  for(i = 0; i < w; ++i){
 			    for(k = 0; k < c; ++k){
 			    int src_index = i + w*j + w*h*k;
-                im.data[src_index] = *data;
+                im.data[src_index] = float(*data)/255.0;
 				data ++;
             } // end of row                 
          }
@@ -139,7 +140,7 @@ void OpencvMat2Img(cv::Mat &mat, image&im) {
     namedWindow("edges",1);
     for(;;)
     {
-        Mat frame,frame1,frame2;
+        Mat frame,frame1 ;
         cap   >> frame; // get a new frame from camera
         cap2  >> frame1;		 
        
@@ -174,12 +175,13 @@ void OpencvMat2Img(cv::Mat &mat, image&im) {
         free_detections(dets, nboxes);
         
 		Img2OpencvMat(frame, im);
-		/*show_image(im, "predictions", 0);
-		char filebuffer[100];
+		
+		//show_image(im, "predictions", 0);
+		/*char filebuffer[100];
 		sprintf(filebuffer,"decout/%05i", filecnt);
 		save_image(im, filebuffer);*/
 		imshow("edges", frame);
-	    imshow("cam2", frame1);	
+	    
 
         filecnt++;
         free_image(im);
@@ -187,6 +189,51 @@ void OpencvMat2Img(cv::Mat &mat, image&im) {
 			
 		//#########################################################################
 		//#########################################################################
+				 //#########################################################################
+		 //#########################################################################
+		 WIDTH  = frame.cols;
+		 HEIGHT = frame.rows;
+         //int cols = mat.cols;
+		 
+	     im = make_image(WIDTH, HEIGHT, 3);
+		 //getimgdata((char*)rgb_frame_data, im, WIDTH, HEIGHT);
+		 OpencvMat2Img(frame1, im);
+          sized = letterbox_image(im, net->w, net->h);
+        //image sized = resize_image(im, net->w, net->h);
+        //image sized2 = resize_max(im, net->w);
+        //image sized = crop_image(sized2, -((net->w - sized2.w)/2), -((net->h - sized2.h)/2), net->w, net->h);
+        //resize_network(net, sized.w, sized.h);
+         l = net->layers[net->n-1];
+
+
+        X = sized.data;
+        time=what_time_is_it_now();
+        network_predict(net, X);
+        printf("%s: Predicted in %f seconds.\n", input, what_time_is_it_now()-time);
+        nboxes = 0;
+        dets = get_network_boxes(net, im.w, im.h, thresh, hier_thresh, 0, 1, &nboxes);
+        printf("detect %d boxes\n", nboxes);
+        //if (nms) do_nms_obj(boxes, probs, l.w*l.h*l.n, l.classes, nms);
+        if (nms) 
+			do_nms_sort(dets, nboxes, l.classes, nms);
+        draw_detections(im, dets, nboxes, thresh, names, alphabet, l.classes);
+        free_detections(dets, nboxes);
+        
+		Img2OpencvMat(frame1, im);
+		
+		//show_image(im, "predictions", 0);
+		/*char filebuffer[100];
+		sprintf(filebuffer,"decout/%05i", filecnt);
+		save_image(im, filebuffer);*/
+		imshow("cam2", frame1);	
+	    
+
+        filecnt++;
+        free_image(im);
+        free_image(sized);
+		
+		
+		
         if(waitKey(30) >= 0) break;
     }
     // the camera will be deinitialized automatically in VideoCapture destructor
